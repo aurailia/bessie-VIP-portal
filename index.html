@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>Bessie, VIP Portal, September</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Nunito:ital,wght@0,300..800;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#2C1F16;
+  --ink-soft:#5C4436;
+  --paper:#FBF7F0;
+  --card:#FFFDF9;
+  --gold:#C9A84C;
+  --gold-deep:#8C6D22;
+  --gold-wash:#F5ECD6;
+  --rose:#F4E1E0;
+  --rose-deep:#B22234;
+  --euca:#5C4436;
+  --euca-wash:#EFE6DC;
+  --line:#E9DFD0;
+  --body:#4A3A30;
+  --muted:#8B7A6C;
+  --disp:"Cormorant Garamond",Georgia,serif;
+  --ui:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --script:"Pinyon Script","Snell Roundhand",cursive;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overscroll-behavior-y:none}
+body{
+  overscroll-behavior-y:none;
+  touch-action:manipulation;
+  font-family:var(--ui);
+  background:var(--paper);
+  color:var(--body);
+  font-size:16.5px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
+}
+
+/* ---------- shell ---------- */
+.shell{display:flex;min-height:100vh;max-width:1150px;margin:0 auto;padding:20px 20px 0;gap:26px}
+.side{
+  display:flex;flex-direction:column;
+  width:264px;flex-shrink:0;
+  background:var(--ink);
+  color:#E6DACB;
+  padding:34px 0 28px;
+  position:sticky;top:20px;height:calc(100vh - 40px);overflow-y:auto;
+  border-radius:16px;
+  box-shadow:0 18px 44px rgba(44,31,22,.16);
+}
+.side::-webkit-scrollbar{width:0}
+.brand{padding:0 28px 22px;border-bottom:1px solid rgba(255,255,255,.08)}
+
+.brand h1{
+  font-family:var(--disp);font-weight:500;font-size:21px;color:#fff;
+  letter-spacing:.01em;margin-top:10px;
+}
+.brand .vip{
+  display:inline-block;margin-top:9px;
+  font-size:11.5px;letter-spacing:.14em;color:var(--gold);
+  border:1px solid rgba(201,168,76,.55);border-radius:2px;
+  padding:3px 9px;
+}
+.nav{padding:16px 14px;display:flex;flex-direction:column;gap:2px}
+.nav button{
+  display:flex;align-items:center;gap:11px;width:100%;
+  background:none;border:none;color:#C9B8A6;cursor:pointer;
+  font-family:var(--ui);font-size:14.5px;text-align:left;
+  padding:10px 14px;border-radius:6px;line-height:1.35;
+  transition:background .15s,color .15s;
+}
+.nav button .g{font-family:var(--disp);color:var(--gold);font-size:15px;width:16px;flex-shrink:0;text-align:center}
+.nav button:hover{background:rgba(255,255,255,.05);color:#fff}
+.nav button.on{background:rgba(201,168,76,.16);color:#fff}
+.nav button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.nav .tick{margin-left:auto;font-size:12px;color:var(--euca-wash);opacity:0;transition:opacity .2s}
+.nav .tick.done{opacity:.9;color:#C9A84C}
+.side-foot{margin-top:auto;padding:20px 28px 0;font-size:12.5px;color:#9E8B7A;border-top:1px solid rgba(255,255,255,.08)}
+.side-foot b{color:#E6DACB;font-weight:600}
+
+/* mobile tab strip */
+.mbar{display:none}
+@media (max-width:880px){
+  .shell{display:block;max-width:none;padding:0;gap:0}
+  .side{display:none}
+  .mbar{
+    display:block;position:sticky;top:0;z-index:40;
+    background:var(--ink);padding:12px 0 0;
+  }
+  .mbar .mtitle{
+    color:#fff;font-family:var(--disp);font-size:17px;
+    padding:0 18px 10px;display:flex;align-items:baseline;gap:8px;
+  }
+  .mbar .mtitle span{color:var(--gold);font-size:12px;font-family:var(--ui);letter-spacing:.12em}
+  .mdd{position:relative;padding:0 14px 12px}
+  .mdd-btn{
+    width:100%;display:flex;align-items:center;gap:10px;
+    background:rgba(255,255,255,.09);border:1px solid rgba(201,168,76,.45);
+    color:#fff;font-family:var(--ui);font-size:15px;font-weight:600;
+    padding:11px 15px;border-radius:9px;cursor:pointer;text-align:left;
+  }
+  .mdd-btn .mdd-g{font-family:var(--disp);color:var(--gold);font-size:15px}
+  .mdd-btn .mdd-caret{margin-left:auto;color:var(--gold);font-size:13px;transition:transform .2s}
+  .mdd.open .mdd-btn .mdd-caret{transform:rotate(180deg)}
+  .mdd-list{
+    display:none;position:absolute;left:14px;right:14px;top:calc(100% - 4px);z-index:60;
+    background:var(--ink);border:1px solid rgba(201,168,76,.45);border-radius:10px;
+    padding:6px;box-shadow:0 14px 34px rgba(30,20,14,.5);
+    max-height:60vh;overflow-y:auto;
+  }
+  .mdd.open .mdd-list{display:block}
+  .mdd-list button{
+    display:flex;align-items:center;gap:11px;width:100%;
+    background:none;border:none;color:#D4C4B2;cursor:pointer;text-align:left;
+    font-family:var(--ui);font-size:14.5px;padding:11px 12px;border-radius:7px;
+  }
+  .mdd-list button .g{font-family:var(--disp);color:var(--gold);width:16px;text-align:center}
+  .mdd-list button.on{background:rgba(201,168,76,.18);color:#fff;font-weight:600}
+}
+
+/* ---------- main column ---------- */
+.main{flex:1;min-width:0}
+.wrap{max-width:740px;margin:0 auto;padding:40px 34px 90px}
+@media (max-width:880px){.wrap{padding:30px 20px 70px}}
+.view{display:none}
+.view.on{display:block;animation:vin .35s ease}
+@keyframes vin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* ---------- type ---------- */
+.kicker{
+  font-size:13px;letter-spacing:.16em;color:var(--gold-deep);
+  margin-bottom:12px;font-weight:600;
+}
+h2.title{
+  font-family:var(--disp);font-weight:500;font-size:clamp(34px,5vw,46px);
+  color:var(--ink);line-height:1.12;letter-spacing:-.01em;margin-bottom:14px;
+}
+h2.title em{font-style:italic;font-weight:500;color:var(--gold-deep)}
+.lede{font-size:17.5px;color:var(--ink-soft);max-width:60ch;margin-bottom:8px}
+h3.sec{
+  font-family:var(--disp);font-weight:600;font-size:22px;color:var(--ink);
+  margin:38px 0 10px;
+}
+p.b{margin:0 0 14px;max-width:64ch}
+p.b b{color:var(--ink);font-weight:600}
+.whisper{
+  font-family:var(--disp);font-style:italic;font-weight:500;
+  font-size:20px;color:var(--gold-deep);line-height:1.5;
+  border-left:2px solid var(--gold);padding:6px 0 6px 20px;margin:24px 0;
+  max-width:56ch;
+}
+
+/* ---------- cards & panels ---------- */
+.panel{
+  background:var(--card);border:1px solid var(--line);border-radius:10px;
+  padding:24px 26px;margin:18px 0;
+}
+.panel.goldline{border-color:rgba(201,168,76,.5);background:linear-gradient(180deg,#FFFDF9,#FAF1E1)}
+.panel.inkpanel{background:var(--ink);color:#EADFD2;border-color:var(--ink)}
+.panel.inkpanel h4{color:#fff}
+.pill{
+  display:inline-block;font-size:12.5px;letter-spacing:.08em;
+  background:var(--gold-wash);color:var(--gold-deep);
+  border-radius:20px;padding:4px 12px;font-weight:600;margin-bottom:10px;
+}
+.pill.sage{background:var(--euca-wash);color:var(--euca)}
+.pill.rosep{background:var(--rose);color:#B22234}
+
+/* facts row (design tab) */
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:20px 0}
+.fact{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 16px 14px}
+.fact .fl{font-size:12px;letter-spacing:.1em;color:var(--muted);margin-bottom:5px}
+.fact .fv{font-family:var(--disp);font-size:18.5px;font-weight:600;color:var(--ink);line-height:1.25}
+.fact .fs{font-size:13px;color:var(--muted);margin-top:4px}
+
+/* accordions */
+details.acc{border:1px solid var(--line);border-radius:9px;background:var(--card);margin:0 0 10px}
+details.acc summary{
+  cursor:pointer;list-style:none;display:flex;align-items:center;gap:12px;
+  padding:15px 18px;font-weight:600;color:var(--ink);font-size:15.5px;
+}
+details.acc summary::-webkit-details-marker{display:none}
+details.acc summary .ag{font-family:var(--disp);color:var(--gold);flex-shrink:0}
+details.acc summary .caret{margin-left:auto;color:var(--muted);transition:transform .2s;font-size:13px}
+details.acc[open] summary .caret{transform:rotate(90deg)}
+details.acc .acc-body{padding:2px 18px 16px;color:var(--body)}
+details.acc .acc-body p{margin:0 0 12px;max-width:62ch}
+details.acc .acc-body p:last-child{margin-bottom:0}
+
+/* ---------- tasks ---------- */
+.progress-shell{margin:22px 0 6px}
+.progress-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.progress-top .pt-l{font-weight:600;color:var(--ink);font-size:15px}
+.progress-top .pt-r{font-size:13.5px;color:var(--muted)}
+.pbar{height:8px;border-radius:6px;background:#EFE5D3;overflow:hidden}
+.pbar .fill{height:100%;width:0%;background:linear-gradient(90deg,var(--gold),var(--gold-deep));border-radius:6px;transition:width .45s ease}
+.week{margin:26px 0 8px}
+.week h4{
+  font-family:var(--disp);font-size:18px;font-weight:600;color:var(--ink);
+  display:flex;align-items:baseline;gap:10px;margin-bottom:4px;
+}
+.week h4 .wd{font-family:var(--ui);font-size:13px;color:var(--muted);font-weight:400}
+.week .wnote{font-size:14px;color:var(--muted);margin-bottom:10px;max-width:60ch}
+.task{
+  display:flex;gap:13px;align-items:flex-start;
+  background:var(--card);border:1px solid var(--line);border-radius:9px;
+  padding:13px 16px;margin-bottom:8px;cursor:pointer;
+  transition:border-color .15s,background .15s;
+}
+.task:hover{border-color:var(--gold)}
+.task .box{
+  width:21px;height:21px;border-radius:6px;border:1.6px solid var(--rose-deep);
+  flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:12px;transition:background .15s,border-color .15s;
+}
+.task.done{background:var(--euca-wash);border-color:var(--euca-wash)}
+.task.done .box{background:var(--euca);border-color:var(--euca)}
+.task.done .tt{color:var(--euca);text-decoration:line-through;text-decoration-thickness:1px}
+.task .tt{font-size:15px;color:var(--ink);font-weight:500;line-height:1.45}
+.task .ts{font-size:13.5px;color:var(--muted);margin-top:2px;line-height:1.5}
+.mine{margin-top:8px}
+.mine li{margin:0 0 7px 18px;font-size:14.5px}
+
+/* ---------- journals / inputs ---------- */
+textarea.jr{
+  width:100%;min-height:120px;resize:vertical;
+  font-family:var(--ui);font-size:15px;line-height:1.6;color:var(--ink);
+  background:var(--card);border:1px solid var(--line);border-radius:9px;
+  padding:14px 16px;
+}
+textarea.jr:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:var(--gold)}
+.savestate{font-size:12.5px;color:var(--muted);margin-top:6px;min-height:16px}
+input.qin{
+  width:100%;font-family:var(--ui);font-size:15px;color:var(--ink);
+  background:var(--card);border:1px solid var(--line);border-radius:9px;
+  padding:12px 15px;
+}
+input.qin:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:var(--gold)}
+.btnrow{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}
+.btn{
+  font-family:var(--ui);font-size:14.5px;font-weight:600;cursor:pointer;
+  border-radius:8px;padding:10px 18px;border:1.5px solid var(--ink);
+  background:var(--ink);color:#fff;transition:opacity .15s,transform .1s;
+}
+.btn:hover{opacity:.88}
+.btn:active{transform:scale(.98)}
+.btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.goldb{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.btn.sageb{background:var(--euca);border-color:var(--euca)}
+.btn.roseb{background:transparent;border-color:var(--rose-deep);color:#B22234}
+.btn[disabled]{opacity:.45;cursor:default;transform:none}
+.loglist{margin-top:16px}
+.logitem{
+  display:flex;gap:12px;align-items:flex-start;
+  border-bottom:1px solid var(--line);padding:10px 2px;font-size:14.5px;
+}
+.logitem .when{flex-shrink:0;color:var(--muted);font-size:12.5px;width:74px;padding-top:2px}
+.logitem .what{color:var(--ink)}
+.logitem .ans{font-weight:700}
+.ans.yes{color:var(--euca)} .ans.no{color:#B22234} .ans.flat{color:var(--muted)}
+.empty{font-size:14px;color:var(--muted);font-style:italic;margin-top:10px}
+
+/* wave buttons */
+.wavegrid{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.wavegrid button{
+  flex:1;min-width:96px;background:var(--card);border:1.5px solid var(--line);
+  border-radius:9px;padding:12px 8px;cursor:pointer;font-family:var(--ui);
+  font-size:14px;color:var(--ink);font-weight:600;transition:border-color .15s,background .15s;
+}
+.wavegrid button span{display:block;font-family:var(--disp);font-size:19px;margin-bottom:3px;color:var(--gold-deep)}
+.wavegrid button:hover{border-color:var(--gold)}
+.wavegrid button.sel{background:var(--gold-wash);border-color:var(--gold)}
+
+/* ---------- ideas & tapping ---------- */
+.idea{
+  border:1px solid var(--line);border-radius:9px;background:var(--card);
+  padding:14px 16px;margin-bottom:9px;
+}
+.idea .it{font-size:15px;color:var(--ink);font-weight:500;line-height:1.5}
+.idea.released .it{color:var(--muted);text-decoration:line-through;text-decoration-thickness:1px;font-weight:400}
+.idea .imeta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:8px;font-size:12.5px;color:var(--muted)}
+.idea .ibadge{font-weight:700;font-size:12.5px}
+.idea .ibadge.keep{color:var(--gold-deep)}
+.idea .ibadge.rest{color:var(--rose-deep);font-style:italic;font-weight:500}
+.idea .ibtn{
+  font-family:var(--ui);font-size:12.5px;font-weight:600;cursor:pointer;
+  border-radius:6px;padding:5px 11px;border:1.3px solid var(--line);background:#fff;color:var(--ink);
+}
+.idea .ibtn:hover{border-color:var(--gold)}
+.idea .ibtn.undo{border:none;background:none;color:var(--muted);text-decoration:underline;padding:5px 2px}
+.tapscript{margin-bottom:26px}
+.setupline{
+  background:var(--gold-wash);border:1px solid rgba(201,168,76,.4);border-radius:9px;
+  padding:14px 17px;font-family:var(--disp);font-style:italic;font-size:16.5px;
+  color:var(--gold-deep);line-height:1.55;margin:10px 0 12px;
+}
+.setupline b{font-family:var(--ui);font-style:normal;font-size:12px;letter-spacing:.1em;color:var(--gold-deep);display:block;margin-bottom:5px}
+.tapline{display:flex;gap:12px;padding:7px 2px;border-bottom:1px solid var(--line);font-size:14.5px}
+.tapline:last-child{border-bottom:none}
+.tapline .pt{flex-shrink:0;width:106px;font-size:12px;letter-spacing:.05em;color:var(--gold-deep);font-weight:700;padding-top:2px}
+.tapline .tx{color:var(--ink)}
+details.acc.script{border-color:rgba(201,168,76,.5);margin-bottom:14px}
+details.acc.script > summary{font-family:var(--disp);font-size:18.5px;font-weight:600;padding:17px 19px}
+details.acc.script > .acc-body{padding:4px 19px 18px}
+.roundfocus{
+  font-size:14px;color:#6B4A36;background:#F8ECE9;border-radius:8px;
+  padding:11px 14px;margin-bottom:12px;line-height:1.55;
+}
+.roundfocus b{font-size:11.5px;letter-spacing:.12em;color:#B22234;display:block;margin-bottom:3px}
+.suds{margin:16px 0 6px}
+.suds-l{font-size:14.5px;font-weight:600;color:var(--ink)}
+.suds-nums{display:flex;gap:5px;flex-wrap:wrap;margin-top:9px}
+.suds-nums button{
+  width:35px;height:35px;border-radius:8px;border:1.4px solid var(--line);
+  background:#fff;font-family:var(--ui);font-size:14px;font-weight:600;color:var(--ink);cursor:pointer;
+  transition:background .12s,border-color .12s;
+}
+.suds-nums button:hover{border-color:var(--gold)}
+.suds-nums button.sel{background:var(--ink);border-color:var(--ink);color:#fff}
+.suds-delta{font-size:14px;color:var(--euca);font-weight:600;margin-top:10px;min-height:18px}
+.pacer{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:16px 0 4px}
+.pacer .psmall{padding:8px 15px;font-size:13.5px}
+.pchip{
+  border:1.3px solid var(--line);background:#fff;border-radius:20px;
+  padding:6px 13px;font-size:12.5px;font-weight:600;color:var(--ink);
+  cursor:pointer;font-family:var(--ui);transition:border-color .12s;
+}
+.pchip:hover{border-color:var(--gold)}
+.plabel{font-size:12.5px;color:var(--muted)}
+/* ---------- misc ---------- */
+.next-call{
+  display:flex;gap:16px;align-items:center;
+  background:var(--ink);color:#EADFD2;border-radius:12px;padding:20px 24px;margin:22px 0;
+}
+.next-call .cg{font-family:var(--disp);font-size:30px;color:var(--gold);flex-shrink:0}
+.next-call b{color:#fff}
+.next-call .ncs{font-size:13.5px;color:#BFAE9C;margin-top:2px}
+.footer{
+  margin-top:60px;padding-top:22px;border-top:1px solid var(--line);
+  font-size:13.5px;color:var(--muted);
+}
+.footer .sig{font-family:var(--disp);font-style:italic;font-size:17px;color:var(--gold-deep);margin-bottom:4px}
+.storenote{font-size:12.5px;color:var(--muted);margin-top:14px}
+
+/* ---------- Bessie additions ---------- */
+.side{position:sticky}
+.brand{position:relative}
+.bemark{width:54px;height:54px;border-radius:50%;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-size:21px;font-weight:600;letter-spacing:.06em;color:var(--gold)}
+.brand h1{font-size:25px;font-weight:600}
+.stars{position:absolute;inset:0;pointer-events:none;overflow:hidden;border-radius:16px}
+.stars i{position:absolute;width:3px;height:3px;border-radius:50%;background:var(--gold);box-shadow:0 0 6px 1px rgba(201,168,76,.7);animation:tw 4.5s ease-in-out infinite}
+.stars i:nth-child(1){top:6%;left:78%}
+.stars i:nth-child(2){top:14%;left:62%;animation-delay:1.2s;width:2px;height:2px}
+.stars i:nth-child(3){top:38%;left:88%;animation-delay:2.1s}
+.stars i:nth-child(4){top:57%;left:8%;animation-delay:.6s;width:2px;height:2px}
+.stars i:nth-child(5){top:71%;left:84%;animation-delay:3s}
+.stars i:nth-child(6){top:83%;left:22%;animation-delay:1.8s;width:2px;height:2px}
+.stars i:nth-child(7){top:3%;left:30%;animation-delay:2.6s;width:2px;height:2px}
+@keyframes tw{0%,100%{opacity:.25}50%{opacity:1}}
+.nav,.side-foot{position:relative}
+.side-foot{font-family:var(--ui)}
+h3.sec{font-size:25px}
+.whisper{font-size:22px}
+.footer .sig{font-family:var(--script);font-style:normal;font-size:30px;color:var(--rose-deep);font-weight:400}
+.task .box{border-color:var(--gold)}
+.task.done .box{background:var(--rose-deep);border-color:var(--rose-deep)}
+.task.done{background:var(--euca-wash);border-color:var(--euca-wash)}
+.task.done .tt{color:var(--ink-soft)}
+.mine{list-style:none;padding:0}
+.mine li{margin:0 0 10px;padding-left:22px;position:relative;line-height:1.55}
+.mine li::before{content:"✦";position:absolute;left:0;top:1px;color:var(--gold);font-size:12px}
+.decgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:14px 0}
+.dec{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--rose-deep);border-radius:8px;padding:14px 16px}
+.dec .dq{font-family:var(--disp);font-size:19px;font-weight:600;color:var(--ink);line-height:1.25;margin-bottom:4px}
+.dec .da{font-size:14px;color:var(--body);line-height:1.5}
+.ladder{margin:24px 0;position:relative}
+.ladder::before{content:"";position:absolute;left:118px;top:10px;bottom:10px;width:1px;background:linear-gradient(var(--gold),var(--rose-deep))}
+.rung{display:grid;grid-template-columns:104px 1fr;gap:28px;margin-bottom:14px;align-items:start}
+.rl{font-family:var(--disp);font-size:18px;font-weight:600;color:var(--gold-deep);text-align:right;line-height:1.2;padding-top:15px}
+.rl span{display:block;font-family:var(--ui);font-size:11.5px;font-weight:500;color:var(--muted);margin-top:3px}
+.rb{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;position:relative}
+.rb::before{content:"";position:absolute;left:-19px;top:21px;width:9px;height:9px;border-radius:50%;background:var(--paper);border:1.5px solid var(--gold)}
+.rung.hot .rb{border-color:var(--rose-deep);background:linear-gradient(180deg,#FFFDF9,#FBF0EE)}
+.rung.hot .rb::before{background:var(--rose-deep);border-color:var(--rose-deep)}
+.rn{font-family:var(--disp);font-size:21px;font-weight:600;color:var(--ink);line-height:1.2}
+.rd{font-size:14.5px;margin-top:4px;line-height:1.55}
+.newtag{font-family:var(--ui);font-size:11px;font-weight:700;background:var(--rose-deep);color:#fff;border-radius:20px;padding:2px 9px;vertical-align:middle;margin-left:6px}
+@media (max-width:560px){
+  .ladder::before{left:6px}
+  .rung{grid-template-columns:1fr;gap:4px;padding-left:24px}
+  .rl{text-align:left;padding-top:0;font-size:16px}
+  .rl br{display:none}.rl span{display:inline;margin-left:6px}
+  .rb::before{left:-23px}
+}
+.crumbs{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch}
+.crumb{flex:1;min-width:120px;background:var(--gold-wash);border-radius:8px;padding:11px 13px;position:relative}
+.crumb b{display:block;color:var(--ink);font-size:14.5px}
+.crumb span{font-size:12.5px;color:var(--muted);line-height:1.4;display:block;margin-top:2px}
+.crumb:last-child{background:var(--rose);}
+ol.steps{margin:6px 0 14px 20px}
+ol.steps li{margin-bottom:6px;padding-left:4px}
+.fact .fl{letter-spacing:.04em}
+.kicker{letter-spacing:.06em}
+body{background:var(--paper)}
+.focus{background:var(--ink);color:#EADFD2;border-radius:12px;padding:24px 26px;margin:22px 0 8px}
+.focus-h{font-family:var(--disp);font-size:24px;font-weight:600;color:#fff;margin-bottom:6px}
+.focus-lede{font-size:15px;color:#D9CAB8;margin-bottom:14px;max-width:62ch}
+.frow{display:flex;gap:14px;padding:11px 0;border-top:1px solid rgba(201,168,76,.22)}
+.fn{flex-shrink:0;width:28px;height:28px;border-radius:50%;border:1.3px solid var(--gold);color:var(--gold);font-family:var(--disp);font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center}
+.frow b{display:block;color:#fff;font-size:15.5px}
+.frow span{display:block;font-size:14px;color:#D9CAB8;line-height:1.55;margin-top:2px}
+.focus-end{margin-top:12px;padding-top:12px;border-top:1px solid rgba(201,168,76,.22);font-size:14.5px;color:#EADFD2}
+.focus-end b{color:var(--gold)}
+.mine li.doneitem::before{content:"✓";color:var(--rose-deep);font-weight:700}
+</style>
+</head>
+<body>
+<div class="mbar">
+  <div class="mtitle">Bessie's Portal <span>VIP September</span></div>
+  <div class="mdd">
+    <button type="button" class="mdd-btn" id="mdd-btn" aria-haspopup="listbox" aria-expanded="false">
+      <span class="mdd-g" id="mdd-g">✦</span><span id="mdd-label">Welcome</span><span class="mdd-caret">▾</span>
+    </button>
+    <div class="mdd-list" id="mdd-list" role="listbox"></div>
+  </div>
+</div>
+<div class="shell">
+<aside class="side">
+  <div class="stars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="brand">
+    <div class="bemark" aria-hidden="true">BE</div>
+    <h1>Bessie's Portal</h1>
+    <span class="vip">VIP, September 2026</span>
+  </div>
+  <nav class="nav" id="nav"></nav>
+  <div class="side-foot">Held by <b>Aurailia</b><br>BE more than do.</div>
+</aside>
+
+<main class="main"><div class="wrap">
+
+<!-- ================= WELCOME ================= -->
+<section class="view" id="v-welcome">
+  <div class="kicker">Welcome, Bessie</div>
+  <h2 class="title">Your room for the rest of September.</h2>
+  <p class="lede">Everything we talked about on our call lives here now. What we decided, what you're doing, what I'm doing, and a few small tools for the days that feel full. It saves what you write, so come back anytime.</p>
+
+  <div class="next-call">
+    <div class="cg">✦</div>
+    <div>
+      <b>September 15 to 30: build the VIP doorway</b>
+      <div class="ncs">Two weeks. One new offer set up in Skool, one free tool path that leads to Premium, and your face on the About page.</div>
+    </div>
+  </div>
+
+  <h3 class="sec">A note from me</h3>
+  <p class="b">Bessie, you walked into that call with the Portal going well, your first Skool review in hand, and a brave call already made: giving the ladies an integration week instead of pushing them to keep up. That's you trusting what the room needed. It's the same thing you teach.</p>
+  <p class="b">So here's where we are. The live Portal is teaching you what the self-led version needs. Your Premium tier is set. The missing piece is the step between Premium and the full A.R.T. of Spiritual Living, and that's the VIP tier we mapped out together: you once a month, Voxer in between, and the self-led Portal included. You said even five women would feel wonderful. Five is a real number, and it fits a part-time week.</p>
+  <div class="whisper">You don't need three platforms and a big launch. You need one home, one clear next step, and women who can see your face.</div>
+  <p class="b">Start with the September Plan tab. Every task is small on purpose. Tap it when it's done and watch the month move.</p>
+
+  <h3 class="sec">How this portal works</h3>
+  <div class="panel goldline">
+    <p class="b" style="margin-bottom:10px"><b>It fills in as we go.</b> After each monthly call, the recap and the plan land here, so nothing lives in your head, your notebook, or a lost email.</p>
+    <p class="b" style="margin-bottom:0"><b>The tools are yours from today.</b> Check In, Idea Log, Tapping and the Wins Ledger save privately in this browser. If you open the portal on a different device, your notes won't follow, so pick one device and keep it there.</p>
+  </div>
+</section>
+
+<!-- ================= CALL RECAP ================= -->
+<section class="view" id="v-recap">
+  <div class="kicker">Our September call</div>
+  <h2 class="title">What we covered.</h2>
+  <p class="lede">The short version of our call, so you don't have to remember it all. Open any section for the details.</p>
+
+  <details class="acc" open>
+    <summary><span class="ag">✦</span>The live Portal cohort<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>The program is going well. One woman is choosing to go through it on her own, and two are working to catch up. You turned this week into an integration week for weeks one through four so they can do their soul work, and you moved the finish out by two weeks, to around October 14.</p>
+      <p>That was the right call. I did the same with my own signature program when I ran it live, and it helped me as much as it helped them. Everything you notice with these three women (where they slow down, what they skip, what lights them up) is exactly what shapes the self-led version.</p>
+    </div>
+  </details>
+
+  <details class="acc">
+    <summary><span class="ag">✦</span>The email that said the Portal is in Premium<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>You caught it after it went out: the email said the Portal is part of Premium, and it isn't. You already sent the correction. Well done. Next time the Portal comes up in an email, it's a natural chance to tell people a self-led version is on the way.</p>
+    </div>
+  </details>
+
+  <details class="acc">
+    <summary><span class="ag">✦</span>One home for your courses<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>You're still wrapping your head around Skool, GoHighLevel and Wix, and your VA knows GoHighLevel well. I get the pull. But three platforms means three places to update, and emails sent from one don't reach the people sitting in another.</p>
+      <p>What we landed on: the Portal lives in Skool and people pay for it right inside Skool, since you're on Skool Pro. The fees are about the same as Wix, and your members never have to leave the community to do the work. GoHighLevel stays for what it already does, your speakers event. Your VA already moved your GoHighLevel contacts into Wix. If new people start landing in GoHighLevel again, a simple Zapier connection can copy them into Wix automatically.</p>
+    </div>
+  </details>
+
+  <details class="acc">
+    <summary><span class="ag">✦</span>The new VIP tier<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>This is the big one. VIP sits between Premium and the A.R.T. of Spiritual Living. It includes everything in Premium, one 1:1 call with you each month, Voxer support in between, and access to the self-led Portal while they're a member.</p>
+      <p>The Portal is also sold on its own as a one-time purchase, around $222. So in Skool, the Portal page can say: buy it for $222, or join VIP and it's included. If a VIP member cancels, they lose Portal access and can buy it if they want to keep going.</p>
+      <p>Price to start: $111 a month, or $147, or $222. I started mine at $111 for the first five people, moved to $147, and will go to $222 as spots fill. You raise it based on how much room is left on your calendar. We also looked at adding an annual option, which Skool makes very simple, and members who switch from monthly to annual keep any unused credit.</p>
+    </div>
+  </details>
+
+  <details class="acc">
+    <summary><span class="ag">✦</span>How VIP differs from the A.R.T. of Spiritual Living<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>A.R.T. is the bigger container: three months, three calls a month, Voxer support, and the full depth of your work. You can give A.R.T. clients access to the Portal for those three months, then remove it in Skool when the container ends, or simply gift it to them. Single sessions still fit in around all of this.</p>
+      <p>VIP is lighter on your time. It's one hour a month of coaching and support, not a full hypnosis journey, plus the Portal doing a lot of the teaching for you.</p>
+    </div>
+  </details>
+
+  <details class="acc">
+    <summary><span class="ag">✦</span>Skool affiliate fees<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>We found a setting together. When something is a "buy now" course, you can turn off the affiliate commission, so Skool doesn't take a cut when someone buys the Portal. For membership tiers like VIP, there's no way to turn it off while Growth Boost is on. You have Growth Boost at 30%, which is fine for now. Just know that a VIP who arrives through the Skool network pays you less that month.</p>
+    </div>
+  </details>
+
+  <details class="acc">
+    <summary><span class="ag">✦</span>Reviews, testimonials and your About page<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>You got your first review! Only paying members can leave Skool reviews, so for free members and past clients, ask them to send a testimonial by DM. Screenshot it, place it on a simple background in Canva, and gather them on one testimonials page. That's exactly how my About page works.</p>
+      <p>The purple graphic on your About page needs to go. You said it yourself: it looks like AI made it. Replace it with a short video of you. Wear the crystal and labradorite crown with your angel wings behind you. That is Bessie, and nobody else can make that video.</p>
+    </div>
+  </details>
+
+  <details class="acc">
+    <summary><span class="ag">✦</span>Your free tools and the path to Premium<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>You want people to follow the breadcrumbs without getting lost. So each free tool gets a simple left-hand menu (Start here, take the quiz or practice, your results, what's next) and a clear next step into Premium.</p>
+      <p>The Chakra Quiz and the Chakra Oracle Card stay free. The Vagus Nerve Relaxation tool stays free and simple. The upgrade is the Chakra Wellness Tool, now rebranded for you: keeping the imagery and gold stars, rewriting it for the women you serve (life's transitions, not money), adding chakra symbols to the cards, and adding hand placements for each chakra. Whether someone is a Reiki practitioner or not, anyone can place their hands there. That tool lives in your Premium Vault.</p>
+    </div>
+  </details>
+
+  <details class="acc">
+    <summary><span class="ag">✦</span>A weekly Monday chakra check-in<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>Your Chakra Wellness Tool is ready, so this can start now. A Monday post in your community: "Let's check in with our chakras this week." Record a quick Loom of you doing the check-in yourself, show your result, and say which practice you're doing this week. Mention at the bottom that the full tool is part of Premium. Schedule it in SchoolKit so it goes out every Monday on its own.</p>
+      <p>We asked: how would a free member feel clicking that and landing in Premium? You said it would be an invitation, not a wall. I agree.</p>
+    </div>
+  </details>
+
+  <details class="acc">
+    <summary><span class="ag">✦</span>Showing up in other Skool groups<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>My newest VIP found me through a comment I left in someone else's group. She joined Standard and upgraded to VIP the same day. You said you want to set aside a certain time each day for this. Yes. It suits your design too: you're not pitching, you're responding to posts that genuinely pull at you.</p>
+    </div>
+  </details>
+</section>
+
+<!-- ================= SEPTEMBER PLAN ================= -->
+<section class="view" id="v-plan">
+  <div class="kicker">The plan</div>
+  <h2 class="title">September 15 to 30.</h2>
+  <p class="lede">Two weeks, in order. Before you start any task, ask your gut if today is the day for it. If the answer is flat, pick a different one. They're all small enough to do in one sitting.</p>
+
+  <div class="focus">
+    <div class="focus-h">Our focus for September</div>
+    <p class="focus-lede">Everything below serves one goal: open your VIP tier so women have a clear next step between Premium and the A.R.T. of Spiritual Living.</p>
+    <div class="frow"><div class="fn">1</div><div><b>Build the VIP doorway in Skool</b><span>Set your VIP price, add monthly and annual options, turn the Portal into a self-led program, and give new VIPs a simple three-step welcome.</span></div></div>
+    <div class="frow"><div class="fn">2</div><div><b>Let people see you</b><span>Record your About page video, collect testimonials into one page, and spend a little time each day in other Skool groups.</span></div></div>
+    <div class="frow"><div class="fn">3</div><div><b>Lead free members toward Premium</b><span>Your free tools will point to the Chakra Wellness Tool in your Premium Vault, and a Monday chakra check-in keeps inviting people in. Your Chakra Wellness Tool is done, and the quiz and vagus tool updates are next. You bring your voice.</span></div></div>
+    <div class="frow"><div class="fn">4</div><div><b>Hold your live Portal ladies</b><span>Integration week, a gentle check-in with the two catching up, and a new finish around October 14. What you learn from them shapes the self-led version.</span></div></div>
+    <p class="focus-end"><b>By September 30:</b> VIP is live in Skool, the self-led Portal is ready to sell, and your face is on your About page.</p>
+  </div>
+
+  <div class="progress-shell">
+    <div class="progress-top"><span class="pt-l">Your progress</span><span class="pt-r" id="prog-txt">0 of 0 done</span></div>
+    <div class="pbar"><div class="fill" id="prog-fill"></div></div>
+  </div>
+
+  <div class="week">
+    <h4>Week one: clear the path <span class="wd">Sept 15 to 21</span></h4>
+    <div class="wnote">Your Portal ladies are in integration week, which gives you a little breathing room. Use it for the quick fixes and the one video.</div>
+    <div id="tasks-w1"></div>
+  </div>
+
+  <div class="week">
+    <h4>Week two: build the VIP doorway <span class="wd">Sept 22 to 30</span></h4>
+    <div class="wnote">Set up the new tier in Skool and start letting people know it's coming. If a step in Skool gets confusing, Voxer me a screen recording and I'll walk you through it.</div>
+    <div id="tasks-w2"></div>
+  </div>
+
+  <h3 class="sec">What I'm taking off your plate</h3>
+  <div class="panel goldline">
+    <span class="pill">AURAILIA</span>
+    <ul class="mine">
+      <li class="doneitem"><b>Chakra Wellness Tool, rebranded for you. Done.</b> Your name and colors, the same imagery and gold stars, rewritten for your women, chakra symbols on the cards, hand placements for each chakra, and reworked chakra check questions. It lives in your Premium Vault.</li>
+      <li><b>Chakra Quiz update.</b> A left-hand menu (Start here, take the quiz, your results, what's next) and a clear next step into the full Chakra Wellness Tool, with a screenshot of it.</li>
+      <li><b>Vagus Nerve Relaxation tool update.</b> Same left-hand menu, a cleaner layout, and the same next step into Premium.</li>
+      <li><b>Brand pass on the Chakra Oracle Card</b> so it matches your ivory, rose and gold like everything else on the free path.</li>
+      <li><b>Finishing the landing page I'm working on for you.</b> Thank you for your patience on this one.</li>
+      <li><b>The HTML for this portal</b>, so you can make one for your own VIP clients after each call. Take out the Human Design, add your chakra practices, and ask Claude to shape it the way you want.</li>
+      <li><b>Any Wix changes.</b> Send me what you want changed and I'll go in and do it.</li>
+    </ul>
+    <p class="b" style="margin:12px 0 0;font-size:14.5px"><b>Next up:</b> the Chakra Quiz and Vagus Nerve Relaxation tool updates. Thank you for sending both files.</p>
+  </div>
+
+  <h3 class="sec">Decisions only you can make</h3>
+  <p class="b">Say each one out loud as a yes or no question and follow the first sound your body makes. Log it in Check In if you want a record.</p>
+  <div class="decgrid">
+    <div class="dec"><div class="dq">VIP price to start</div><div class="da">$111, $147 or $222 a month. Most people start low for the first five spots, then raise it.</div></div>
+    <div class="dec"><div class="dq">VIP annual price</div><div class="da">$1,111 a year works nicely at $111 a month. It's about two months free.</div></div>
+    <div class="dec"><div class="dq">Self-led Portal price</div><div class="da">You said $222 felt right. Confirm it before the Skool page goes up.</div></div>
+    <div class="dec"><div class="dq">When the self-led Portal opens</div><div class="da">Now, or after the live cohort finishes around October 14? Opening after gives you their feedback first.</div></div>
+    <div class="dec"><div class="dq">Portal access for A.R.T. clients</div><div class="da">Three months of access that you remove at the end, or a gift they keep?</div></div>
+    <div class="dec"><div class="dq">Your VA and GoHighLevel</div><div class="da">Is there a job you want her doing there beyond the speakers event? If it's course delivery, let's talk first.</div></div>
+  </div>
+</section>
+
+<!-- ================= OFFER PATH ================= -->
+<section class="view" id="v-path">
+  <div class="kicker">How it all fits</div>
+  <h2 class="title">Your offer path.</h2>
+  <p class="lede">From the first free quiz to your deepest container. Each step gives a woman a real taste and one clear next step. Nobody is pushed, everyone can find the door.</p>
+
+  <div class="ladder">
+    <div class="rung">
+      <div class="rl">Free</div>
+      <div class="rb">
+        <div class="rn">Your Skool community, Standard</div>
+        <div class="rd">Chakra Quiz, Chakra Oracle Card, Vagus Nerve Relaxation tool, and the healing circle replay. Each tool ends by pointing to the Chakra Wellness Tool in Premium.</div>
+      </div>
+    </div>
+    <div class="rung">
+      <div class="rl">$11 a month<br><span>$9 a month annually</span></div>
+      <div class="rb">
+        <div class="rn">Premium</div>
+        <div class="rd">Monthly chakra sound and hypnosis, the Premium Vault, and the new Chakra Wellness Tool. The Monday check-in post invites people here.</div>
+      </div>
+    </div>
+    <div class="rung hot">
+      <div class="rl">$111 a month<br><span>to start, you decide</span></div>
+      <div class="rb">
+        <div class="rn">VIP <span class="newtag">new</span></div>
+        <div class="rd">Everything in Premium, one 1:1 call with you each month, Voxer support, and the self-led Portal included while they're a member. Five spots to start.</div>
+      </div>
+    </div>
+    <div class="rung">
+      <div class="rl">$222 once<br><span>price to confirm</span></div>
+      <div class="rb">
+        <div class="rn">The Portal, self-led</div>
+        <div class="rd">The eight-week program to do at their own pace, bought right inside Skool with the affiliate fee turned off. Or included with VIP.</div>
+      </div>
+    </div>
+    <div class="rung">
+      <div class="rl">Live cohort</div>
+      <div class="rb">
+        <div class="rn">The Portal, live</div>
+        <div class="rd">For women who want to go through it with you and a small group. The current cohort wraps around October 14.</div>
+      </div>
+    </div>
+    <div class="rung">
+      <div class="rl">3 months<br><span>price to confirm</span></div>
+      <div class="rb">
+        <div class="rn">The A.R.T. of Spiritual Living</div>
+        <div class="rd">Three calls a month, Voxer support, and Portal access during the container. Single hypnosis sessions sit alongside it for anyone who wants one.</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sec">What five VIPs looks like</h3>
+  <div class="facts">
+    <div class="fact"><div class="fl">At $111</div><div class="fv">$555 a month</div><div class="fs">Five hours of calls a month</div></div>
+    <div class="fact"><div class="fl">At $147</div><div class="fv">$735 a month</div><div class="fs">Same five hours</div></div>
+    <div class="fact"><div class="fl">At $222</div><div class="fv">$1,110 a month</div><div class="fs">Same five hours</div></div>
+  </div>
+  <p class="b">That's recurring, before any A.R.T. clients, sessions or Portal sales. And it fits the two to three client days a week you told me you want to keep, for years. That is a real business, not a hobby. Figures are before Skool's fees and any affiliate commission.</p>
+
+  <h3 class="sec">What the free tool path looks like</h3>
+  <div class="panel">
+    <div class="crumbs">
+      <div class="crumb"><b>A post or comment</b><span>in your group or someone else's</span></div>
+      <div class="crumb"><b>A free tool</b><span>quiz, oracle card or vagus nerve practice</span></div>
+      <div class="crumb"><b>Their result</b><span>and one simple practice</span></div>
+      <div class="crumb"><b>What's next</b><span>the full Chakra Wellness Tool in Premium</span></div>
+      <div class="crumb"><b>VIP</b><span>when they want you, not just the tools</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= YOUR DESIGN ================= -->
+<section class="view" id="v-design">
+  <div class="kicker">Your design</div>
+  <h2 class="title">How you are built to work.</h2>
+  <p class="lede">The short version of your Business Alignment Blueprint, kept one tap away. Everything in this month's plan was shaped around it.</p>
+
+  <div class="facts">
+    <div class="fact"><div class="fl">Type</div><div class="fv">Generator</div><div class="fs">Renewable energy when the work truly calls you</div></div>
+    <div class="fact"><div class="fl">Strategy</div><div class="fv">Respond</div><div class="fs">Let life bring it to you, then say yes or no</div></div>
+    <div class="fact"><div class="fl">Authority</div><div class="fv">Sacral</div><div class="fs">Your body answers right away. No waiting needed.</div></div>
+    <div class="fact"><div class="fl">Profile</div><div class="fv">2/4</div><div class="fs">The Hermit and the Opportunist</div></div>
+    <div class="fact"><div class="fl">Cross</div><div class="fv">Rulership</div><div class="fs">Right Angle, 26/45 | 47/22</div></div>
+    <div class="fact"><div class="fl">Signal</div><div class="fv">Satisfaction</div><div class="fs">Frustration means you pushed</div></div>
+  </div>
+
+  <h3 class="sec">Why this plan fits you</h3>
+  <details class="acc" open>
+    <summary><span class="ag">✦</span>Your people are your growth<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>Your 4th line grows through the people who already know you. Memberships and small groups aren't just good business for you, they're how your energy naturally makes money. VIP is a small circle of women who get you regularly. That's why it fits. Jen, Kimber, Lisa and Jamel are exactly the kind of women to tell first.</p>
+    </div>
+  </details>
+  <details class="acc">
+    <summary><span class="ag">✦</span>Respond, don't chase<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>The daily time in other Skool groups works for you because you're answering posts that pull at you, not pitching. The Monday check-in works the same way: you put a question out, and you respond to whoever answers.</p>
+    </div>
+  </details>
+  <details class="acc">
+    <summary><span class="ag">✦</span>Let them see you<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>Your 2nd line gets called out by others, but people have to be able to find you first. The About page video and the testimonials page do exactly that. Your conviction (Gate 26) comes through best when women can see your face and hear your voice.</p>
+    </div>
+  </details>
+  <details class="acc">
+    <summary><span class="ag">✦</span>Protect your cave time<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>Your Hermit line needs real solitude to restore. Keep client work to two or three days a week, with buffer time between sessions. Your open Solar Plexus, Root and Crown take in a lot from the women you hold. VIP calls are lighter than hypnosis journeys, which is part of why this tier works for you.</p>
+    </div>
+  </details>
+  <details class="acc">
+    <summary><span class="ag">✦</span>Price what's rare<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>The 2nd line shadow is seeing your gifts as ordinary because they come so easily to you. When you set your VIP price, notice if your mind reaches for the lowest number out of habit. Ask your body instead.</p>
+    </div>
+  </details>
+
+  <h3 class="sec">Your daily decision practice</h3>
+  <div class="panel inkpanel">
+    <p class="b" style="color:#eadfd2"><b style="color:#fff">Small decisions:</b> Say it out loud as a yes or no question, like "Do I want to record the video today?" Follow the first thing your body does, the warmth and lean forward, or the pull back. You don't have to sleep on it.</p>
+    <p class="b" style="color:#eadfd2;margin-bottom:0"><b style="color:#fff">Big decisions:</b> Your Sacral needs something to respond to. Voxer me and I'll ask you yes or no questions until the answer comes from your body and not your head.</p>
+  </div>
+</section>
+
+<!-- ================= CHECK IN ================= -->
+<section class="view" id="v-checkin">
+  <div class="kicker">Daily tools</div>
+  <h2 class="title">Check in.</h2>
+  <p class="lede">Small practices, a minute or two each. They put your gut on the record, so you can see your own patterns.</p>
+
+  <h3 class="sec">Ask your Sacral</h3>
+  <div class="panel">
+    <p class="b">Type a yes or no question, say it out loud, and log what your body did before your mind stepped in.</p>
+    <input class="qin" id="sac-q" placeholder="Is $111 the right VIP price to start?">
+    <div class="btnrow">
+      <button type="button" class="btn sageb" id="sac-yes">Yes, a lean in</button>
+      <button type="button" class="btn roseb" id="sac-no">No, a pull back</button>
+      <button type="button" class="btn ghost" id="sac-flat">Nothing yet</button>
+    </div>
+    <div class="loglist" id="sac-log"><div class="empty">No questions logged yet. The first one feels strange, then it becomes second nature.</div></div>
+  </div>
+
+  <h3 class="sec">How was today?</h3>
+  <div class="panel">
+    <p class="b">One tap at the end of the day. For your design, satisfaction means you spent your energy on real yeses, and frustration means somewhere you pushed. No judgment either way.</p>
+    <div class="wavegrid">
+      <button type="button" data-wave="Glowing"><span>☀</span>Glowing</button>
+      <button type="button" data-wave="Satisfied"><span>✶</span>Satisfied</button>
+      <button type="button" data-wave="In between"><span>─</span>In between</button>
+      <button type="button" data-wave="Frustrated"><span>◡</span>Frustrated</button>
+      <button type="button" data-wave="Drained"><span>☾</span>Drained</button>
+    </div>
+    <div class="loglist" id="wave-log"><div class="empty">No check ins yet.</div></div>
+  </div>
+
+  <h3 class="sec">The rose water reset</h3>
+  <div class="panel goldline">
+    <p class="b">The practice we talked about at the start of our call. It calms the nervous system fast by pulling you out of fight or flight, and it's lovely on these hot days. Do it midday, or two or three times when it's scorching.</p>
+    <ol class="steps">
+      <li>Fill your collapsible bowl with ice and cool water, and add a splash of rose water.</li>
+      <li>Take a breath, then gently dip your face in for a few seconds.</li>
+      <li>Come up and take three slow breaths. Repeat once or twice if it feels good.</li>
+    </ol>
+    <p class="b" style="margin-bottom:0;font-size:14.5px"><b>Make it easy:</b> freeze rose water into your ice cube tray so it's ready to go. Add cucumber slices, or a little fresh aloe from a pot, when you want it to feel more like a ritual. This is also a simple tool to hand your own clients when anxiety spikes. If you have a heart condition, check with your doctor before cold water practices.</p>
+  </div>
+</section>
+
+<!-- ================= IDEA LOG ================= -->
+<section class="view" id="v-ideas">
+  <div class="kicker">Catch now, decide later</div>
+  <h2 class="title">The idea log.</h2>
+  <p class="lede">Ideas land all day, like the one for hand placements that came to you on our call. Catch each one here the moment it arrives. Tomorrow, ask your body if it's still a yes. If it lights you up, it's real. If it's gone flat, let it go with no guilt.</p>
+  <div class="panel">
+    <input class="qin" id="idea-in" placeholder="A new tool, a post, a circle theme, anything...">
+    <div class="btnrow"><button type="button" class="btn goldb" id="idea-add">Catch it</button></div>
+    <div class="loglist" id="idea-log"><div class="empty">Nothing caught yet. The next idea goes here instead of into your notebook margins.</div></div>
+  </div>
+</section>
+
+<!-- ================= TAPPING ================= -->
+<section class="view" id="v-tapping">
+  <div class="kicker">EFT, written from our call</div>
+  <h2 class="title">Tapping scripts.</h2>
+  <p class="lede">Two scripts, written from what came up on our call. Change any line that doesn't sound like you. Rate the feeling before you start, tap through the rounds, then rate it again. Begin each one with the setup statement on the karate chop point, said three times.</p>
+
+  <details class="acc script" id="script-s1">
+    <summary><span class="ag">✦</span>Too many platforms, one clear home<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p class="b">For the moments when Skool, GoHighLevel and Wix all start talking at once. You said on our call that you're still trying to wrap your head around it all. Use this when the tech starts to feel bigger than the work.</p>
+      <div class="suds" data-s="s1" data-pos="before"><div class="suds-l">Before you tap: how strong is it right now? 0 is nothing, 10 is a lot.</div><div class="suds-nums"></div></div>
+      <div class="pacer" data-s="s1"><button type="button" class="btn goldb psmall pace-toggle">▶ Start guided pace</button><button type="button" class="pchip pace-slower">slower</button><button type="button" class="pchip pace-faster">faster</button><span class="plabel"></span></div>
+      <div class="setupline"><b>SETUP, KARATE CHOP, SAY 3 TIMES</b>"Even though all these platforms have my head spinning and I don't know where everything belongs, I love and accept myself, and I choose one simple home."</div>
+      <details class="acc" open><summary><span class="ag">1</span>Round one: naming it<span class="caret">›</span></summary><div class="acc-body"><div class="roundfocus"><b>WHAT TO FEEL THIS ROUND</b>Let the overwhelm be here. Say it plainly.</div>
+        <div class="tapline"><span class="pt">EYEBROW</span><span class="tx">So many places to keep track of</span></div>
+        <div class="tapline"><span class="pt">SIDE OF EYE</span><span class="tx">Skool, GoHighLevel, Wix</span></div>
+        <div class="tapline"><span class="pt">UNDER EYE</span><span class="tx">I'm still trying to wrap my head around it</span></div>
+        <div class="tapline"><span class="pt">UNDER NOSE</span><span class="tx">And when an email goes out wrong, I feel it</span></div>
+        <div class="tapline"><span class="pt">CHIN</span><span class="tx">This buzzing in my head</span></div>
+        <div class="tapline"><span class="pt">COLLARBONE</span><span class="tx">Like the tech is bigger than the work</span></div>
+        <div class="tapline"><span class="pt">UNDER ARM</span><span class="tx">I'd so much rather be with my clients</span></div>
+        <div class="tapline"><span class="pt">TOP OF HEAD</span><span class="tx">All this spinning, and it's okay to feel it</span></div>
+      </div></details>
+      <details class="acc" open><summary><span class="ag">2</span>Round two: softening<span class="caret">›</span></summary><div class="acc-body"><div class="roundfocus"><b>WHAT TO FEEL THIS ROUND</b>Soften it. A mistake in an email is a moment, not a verdict.</div>
+        <div class="tapline"><span class="pt">EYEBROW</span><span class="tx">What if I don't have to master all of it</span></div>
+        <div class="tapline"><span class="pt">SIDE OF EYE</span><span class="tx">What if I only need one home</span></div>
+        <div class="tapline"><span class="pt">UNDER EYE</span><span class="tx">One email caught and fixed</span></div>
+        <div class="tapline"><span class="pt">UNDER NOSE</span><span class="tx">That's just me paying attention</span></div>
+        <div class="tapline"><span class="pt">CHIN</span><span class="tx">I have Aurailia, and I have my VA</span></div>
+        <div class="tapline"><span class="pt">COLLARBONE</span><span class="tx">I don't have to hold it all alone</span></div>
+        <div class="tapline"><span class="pt">UNDER ARM</span><span class="tx">The tools are here to serve the work</span></div>
+        <div class="tapline"><span class="pt">TOP OF HEAD</span><span class="tx">Not the other way around</span></div>
+      </div></details>
+      <details class="acc" open><summary><span class="ag">3</span>Round three: choosing<span class="caret">›</span></summary><div class="acc-body"><div class="roundfocus"><b>WHAT TO FEEL THIS ROUND</b>Now choose. Say these like decisions.</div>
+        <div class="tapline"><span class="pt">EYEBROW</span><span class="tx">I choose one home for my work</span></div>
+        <div class="tapline"><span class="pt">SIDE OF EYE</span><span class="tx">My Portal lives in my community</span></div>
+        <div class="tapline"><span class="pt">UNDER EYE</span><span class="tx">I take one small step at a time</span></div>
+        <div class="tapline"><span class="pt">UNDER NOSE</span><span class="tx">I ask for help when I need it</span></div>
+        <div class="tapline"><span class="pt">CHIN</span><span class="tx">My mind can be quiet now</span></div>
+        <div class="tapline"><span class="pt">COLLARBONE</span><span class="tx">I am calm, I am clear</span></div>
+        <div class="tapline"><span class="pt">UNDER ARM</span><span class="tx">I BE more than I do</span></div>
+        <div class="tapline"><span class="pt">TOP OF HEAD</span><span class="tx">And that is more than enough</span></div>
+      </div></details>
+      <div class="suds" data-s="s1" data-pos="after"><div class="suds-l">Now take a slow breath and check again. Where is it now?</div><div class="suds-nums"></div></div>
+      <div class="suds-delta" data-s="s1"></div>
+    </div>
+  </details>
+
+  <details class="acc script" id="script-s2">
+    <summary><span class="ag">✦</span>Letting them see me<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p class="b">For recording your About page video, asking for testimonials, and setting your VIP price. All three ask the same thing of you: let people see how good you are at this. Use it right before you hit record or send an ask.</p>
+      <div class="suds" data-s="s2" data-pos="before"><div class="suds-l">Before you tap: how strong is it right now? 0 is nothing, 10 is a lot.</div><div class="suds-nums"></div></div>
+      <div class="pacer" data-s="s2"><button type="button" class="btn goldb psmall pace-toggle">▶ Start guided pace</button><button type="button" class="pchip pace-slower">slower</button><button type="button" class="pchip pace-faster">faster</button><span class="plabel"></span></div>
+      <div class="setupline"><b>SETUP, KARATE CHOP, SAY 3 TIMES</b>"Even though part of me would rather stay behind the picture than be seen and ask for what I'm worth, I love and accept myself, and I let my light be seen."</div>
+      <details class="acc" open><summary><span class="ag">1</span>Round one: naming it<span class="caret">›</span></summary><div class="acc-body"><div class="roundfocus"><b>WHAT TO FEEL THIS ROUND</b>Name the hesitation honestly. It loses its grip once it's said.</div>
+        <div class="tapline"><span class="pt">EYEBROW</span><span class="tx">That picture was easier than my face</span></div>
+        <div class="tapline"><span class="pt">SIDE OF EYE</span><span class="tx">Asking for testimonials feels awkward</span></div>
+        <div class="tapline"><span class="pt">UNDER EYE</span><span class="tx">What if I'm asking too much</span></div>
+        <div class="tapline"><span class="pt">UNDER NOSE</span><span class="tx">What if the price is too high</span></div>
+        <div class="tapline"><span class="pt">CHIN</span><span class="tx">This work comes so naturally to me</span></div>
+        <div class="tapline"><span class="pt">COLLARBONE</span><span class="tx">It's hard to see how rare it is</span></div>
+        <div class="tapline"><span class="pt">UNDER ARM</span><span class="tx">So I stay a little hidden</span></div>
+        <div class="tapline"><span class="pt">TOP OF HEAD</span><span class="tx">And I'm ready to notice that</span></div>
+      </div></details>
+      <details class="acc" open><summary><span class="ag">2</span>Round two: softening<span class="caret">›</span></summary><div class="acc-body"><div class="roundfocus"><b>WHAT TO FEEL THIS ROUND</b>Remember the review that came in. Remember what Jen, Kimber, Lisa and Jamel said.</div>
+        <div class="tapline"><span class="pt">EYEBROW</span><span class="tx">She was raving about her session</span></div>
+        <div class="tapline"><span class="pt">SIDE OF EYE</span><span class="tx">She was happy to say it out loud</span></div>
+        <div class="tapline"><span class="pt">UNDER EYE</span><span class="tx">People want to tell others about me</span></div>
+        <div class="tapline"><span class="pt">UNDER NOSE</span><span class="tx">Asking gives them the chance</span></div>
+        <div class="tapline"><span class="pt">CHIN</span><span class="tx">My face tells the truth a graphic can't</span></div>
+        <div class="tapline"><span class="pt">COLLARBONE</span><span class="tx">Twenty years of this work is in my voice</span></div>
+        <div class="tapline"><span class="pt">UNDER ARM</span><span class="tx">My angels are right behind me</span></div>
+        <div class="tapline"><span class="pt">TOP OF HEAD</span><span class="tx">I don't have to hide anything</span></div>
+      </div></details>
+      <details class="acc" open><summary><span class="ag">3</span>Round three: choosing<span class="caret">›</span></summary><div class="acc-body"><div class="roundfocus"><b>WHAT TO FEEL THIS ROUND</b>Now choose it. The victor, not the victim.</div>
+        <div class="tapline"><span class="pt">EYEBROW</span><span class="tx">I choose to be seen</span></div>
+        <div class="tapline"><span class="pt">SIDE OF EYE</span><span class="tx">In my crown, with my wings</span></div>
+        <div class="tapline"><span class="pt">UNDER EYE</span><span class="tx">I ask with ease</span></div>
+        <div class="tapline"><span class="pt">UNDER NOSE</span><span class="tx">I receive with an open heart</span></div>
+        <div class="tapline"><span class="pt">CHIN</span><span class="tx">I price from my body, not my habits</span></div>
+        <div class="tapline"><span class="pt">COLLARBONE</span><span class="tx">I am building a real business</span></div>
+        <div class="tapline"><span class="pt">UNDER ARM</span><span class="tx">Abundance is welcome here, in all forms</span></div>
+        <div class="tapline"><span class="pt">TOP OF HEAD</span><span class="tx">I trust my light</span></div>
+      </div></details>
+      <div class="suds" data-s="s2" data-pos="after"><div class="suds-l">Now take a slow breath and check again. Where is it now?</div><div class="suds-nums"></div></div>
+      <div class="suds-delta" data-s="s2"></div>
+    </div>
+  </details>
+
+  <div class="panel" style="margin-top:22px">
+    <span class="pill rosep">AFTER OUR NEXT CALL</span>
+    <p class="b" style="margin-bottom:0">If something specific comes up in October, a new script gets written around your exact words and added here.</p>
+  </div>
+</section>
+
+<!-- ================= WINS ================= -->
+<section class="view" id="v-wins">
+  <div class="kicker">Evidence</div>
+  <h2 class="title">The wins ledger.</h2>
+  <p class="lede">A full week makes it easy to forget what went right. Keep the proof here. Anything counts: a video recorded, a testimonial received, a VIP question answered, a rest day actually taken.</p>
+  <div class="panel">
+    <input class="qin" id="win-in" placeholder="What happened?">
+    <div class="btnrow"><button type="button" class="btn goldb" id="win-add">Add it to the ledger</button></div>
+    <div class="loglist" id="win-log"><div class="empty">Your first Skool review belongs here. Add it now.</div></div>
+  </div>
+  <div class="footer">
+    <div class="sig">Trust your light, Bessie.</div>
+    Aurailia for Bessie, VIP September 2026
+    <div class="storenote">Everything you write here is saved privately in this browser and is here when you return.</div>
+  </div>
+</section>
+
+</div></main>
+</div>
+
+<script>
+/* ============ data ============ */
+const VIEWS=[
+  {id:"welcome",label:"Welcome",g:"✦"},
+  {id:"recap",label:"Call Recap",g:"◈"},
+  {id:"plan",label:"September Plan",g:"◆"},
+  {id:"path",label:"Your Offer Path",g:"❀"},
+  {id:"design",label:"Your Design",g:"✧"},
+  {id:"checkin",label:"Check In",g:"◠"},
+  {id:"ideas",label:"Idea Log",g:"✺"},
+  {id:"tapping",label:"Tapping",g:"☾"},
+  {id:"wins",label:"Wins Ledger",g:"✶"}
+];
+
+
+
+/* ============ storage ============ */
+const mem={};
+async function sGet(k){
+  try{ if(window.storage){ const r=await window.storage.get(k); if(r) return JSON.parse(r.value); } }catch(e){}
+  try{ const v=localStorage.getItem(k); if(v!==null) return JSON.parse(v); }catch(e){}
+  return mem[k]!==undefined?mem[k]:null;
+}
+async function sSet(k,v){
+  mem[k]=v;
+  try{ localStorage.setItem(k,JSON.stringify(v)); }catch(e){}
+  try{ if(window.storage){ await window.storage.set(k,JSON.stringify(v)); } }catch(e){}
+}
+function todayKey(){
+  const d=new Date();
+  return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+}
+function niceDate(k){
+  const [y,m,d]=k.split("-").map(Number);
+  return new Date(y,m-1,d).toLocaleDateString("en-US",{month:"short",day:"numeric"});
+}
+function nowStamp(){
+  return new Date().toLocaleDateString("en-US",{month:"short",day:"numeric"});
+}
+
+/* ============ nav ============ */
+const navEl=document.getElementById("nav");
+const mddEl=document.querySelector(".mdd");
+const mddBtn=document.getElementById("mdd-btn");
+const mddList=document.getElementById("mdd-list");
+function closeMdd(){mddEl.classList.remove("open");mddBtn.setAttribute("aria-expanded","false");}
+function go(id){
+  document.querySelectorAll(".view").forEach(v=>v.classList.toggle("on",v.id==="v-"+id));
+  document.querySelectorAll("#nav button").forEach(b=>b.classList.toggle("on",b.dataset.v===id));
+  document.querySelectorAll("#mdd-list button").forEach(b=>b.classList.toggle("on",b.dataset.v===id));
+  const v=VIEWS.find(x=>x.id===id);
+  if(v){document.getElementById("mdd-label").textContent=v.label;document.getElementById("mdd-g").textContent=v.g;}
+  closeMdd();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+VIEWS.forEach(v=>{
+  const b=document.createElement("button");
+  b.type="button";
+  b.dataset.v=v.id;
+  b.innerHTML='<span class="g">'+v.g+'</span>'+v.label+'<span class="tick" id="tick-'+v.id+'">✓</span>';
+  b.addEventListener("click",()=>go(v.id));
+  navEl.appendChild(b);
+  const mb=document.createElement("button");
+  mb.type="button";
+  mb.dataset.v=v.id;
+  mb.innerHTML='<span class="g">'+v.g+'</span>'+v.label;
+  mb.setAttribute("role","option");
+  mb.addEventListener("click",()=>go(v.id));
+  mddList.appendChild(mb);
+});
+mddBtn.addEventListener("click",e=>{
+  e.stopPropagation();
+  const open=mddEl.classList.toggle("open");
+  mddBtn.setAttribute("aria-expanded",open?"true":"false");
+});
+document.addEventListener("click",e=>{
+  if(!mddEl.contains(e.target)) closeMdd();
+});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeMdd();});
+go("welcome");
+
+/* ============ journals ============ */
+function wireJournal(taId,ssId,key){
+  const ta=document.getElementById(taId), ss=document.getElementById(ssId);
+  let t=null;
+  ta.addEventListener("input",()=>{
+    ss.textContent="Saving...";
+    clearTimeout(t);
+    t=setTimeout(async()=>{
+      await sSet(key,ta.value);
+      ss.textContent=ta.value.trim()?"Saved":"";
+      const tick=document.getElementById("tick-call");
+      if(tick&&taId==="jr-prep") tick.classList.toggle("done",!!ta.value.trim());
+    },600);
+  });
+}
+
+/* ============ sacral ============ */
+let sacLog=[];
+function renderSac(){
+  const el=document.getElementById("sac-log");
+  if(!sacLog.length){el.innerHTML='<div class="empty">No questions logged yet. The first one feels strange, then it becomes second nature.</div>';return;}
+  el.innerHTML=sacLog.slice(0,14).map(i=>
+    '<div class="logitem"><div class="when">'+i.d+'</div><div class="what">'+esc(i.q)+' <span class="ans '+i.c+'">'+i.a+'</span></div></div>'
+  ).join("");
+}
+async function addSac(a,c){
+  const q=document.getElementById("sac-q").value.trim();
+  if(!q) return;
+  sacLog.unshift({q:q,a:a,c:c,d:nowStamp()});
+  sacLog=sacLog.slice(0,40);
+  await sSet("bessievip:sacral",sacLog);
+  document.getElementById("sac-q").value="";
+  renderSac();
+}
+document.getElementById("sac-yes").addEventListener("click",()=>addSac("uh-huh","yes"));
+document.getElementById("sac-no").addEventListener("click",()=>addSac("uh-uh","no"));
+document.getElementById("sac-flat").addEventListener("click",()=>addSac("nothing","flat"));
+
+/* ============ wave ============ */
+let waveLog=[];
+function renderWave(){
+  const el=document.getElementById("wave-log");
+  if(!waveLog.length){el.innerHTML='<div class="empty">No check ins yet.</div>';return;}
+  el.innerHTML=waveLog.slice(0,10).map(i=>
+    '<div class="logitem"><div class="when">'+i.d+'</div><div class="what">'+esc(i.w)+'</div></div>'
+  ).join("");
+}
+document.querySelectorAll(".wavegrid button").forEach(b=>{
+  b.addEventListener("click",async()=>{
+    document.querySelectorAll(".wavegrid button").forEach(x=>x.classList.remove("sel"));
+    b.classList.add("sel");
+    waveLog.unshift({w:b.dataset.wave,d:nowStamp()});
+    waveLog=waveLog.slice(0,30);
+    await sSet("bessievip:wave",waveLog);
+    renderWave();
+    const tick=document.getElementById("tick-checkin");
+    if(tick) tick.classList.add("done");
+  });
+});
+
+/* ============ idea log ============ */
+let ideaLog=[];
+function daysSince(k){
+  const [y,mo,d]=k.split("-").map(Number);
+  const then=new Date(y,mo-1,d), now=new Date();
+  return Math.floor((new Date(now.getFullYear(),now.getMonth(),now.getDate())-then)/86400000);
+}
+function renderIdeas(){
+  const el=document.getElementById("idea-log");
+  if(!ideaLog.length){el.innerHTML='<div class="empty">Nothing caught yet. The next idea goes here instead of into your notebook margins.</div>';return;}
+  el.innerHTML="";
+  ideaLog.forEach((i,ix)=>{
+    const days=daysSince(i.k);
+    const wrap=document.createElement("div");
+    wrap.className="idea"+(i.st==="release"?" released":"");
+    let meta='<span>caught '+(days===0?"today":days===1?"yesterday":days+" days ago")+'</span>';
+    if(i.st==="keep"){
+      meta+='<span class="ibadge keep">✶ still a yes</span><button type="button" class="ibtn undo" data-a="undo" data-i="'+ix+'">undo</button>';
+    }else if(i.st==="release"){
+      meta+='<span class="ibadge" style="color:var(--muted)">released</span><button type="button" class="ibtn undo" data-a="undo" data-i="'+ix+'">undo</button>';
+    }else if(days<1){
+      meta+='<span class="ibadge rest">resting overnight · ask your gut tomorrow</span>';
+    }else{
+      meta+='<button type="button" class="ibtn" data-a="keep" data-i="'+ix+'">Still lights me up</button><button type="button" class="ibtn" data-a="release" data-i="'+ix+'">Gone flat</button>';
+    }
+    wrap.innerHTML='<div class="it">'+esc(i.t)+'</div><div class="imeta">'+meta+'</div>';
+    el.appendChild(wrap);
+  });
+  el.querySelectorAll(".ibtn").forEach(b=>{
+    b.addEventListener("click",async()=>{
+      const ix=+b.dataset.i, a=b.dataset.a;
+      ideaLog[ix].st=(a==="undo")?null:a;
+      await sSet("bessievip:ideas",ideaLog);
+      renderIdeas();
+    });
+  });
+}
+document.getElementById("idea-add").addEventListener("click",async()=>{
+  const v=document.getElementById("idea-in").value.trim();
+  if(!v) return;
+  ideaLog.unshift({t:v,k:todayKey(),st:null});
+  ideaLog=ideaLog.slice(0,80);
+  await sSet("bessievip:ideas",ideaLog);
+  document.getElementById("idea-in").value="";
+  renderIdeas();
+  const tick=document.getElementById("tick-ideas"); if(tick)tick.classList.add("done");
+});
+document.getElementById("idea-in").addEventListener("keydown",e=>{
+  if(e.key==="Enter") document.getElementById("idea-add").click();
+});
+
+/* ============ suds ============ */
+let sudsState={};
+async function setSuds(sc,pos,n){
+  sudsState[sc]=sudsState[sc]||{};
+  sudsState[sc][pos]=n;
+  await sSet("bessievip:suds",sudsState);
+  renderSuds();
+}
+function renderSuds(){
+  document.querySelectorAll(".suds").forEach(el=>{
+    const v=(sudsState[el.dataset.s]||{})[el.dataset.pos];
+    el.querySelectorAll(".suds-nums button").forEach(b=>b.classList.toggle("sel",v!==undefined&&+b.textContent===v));
+  });
+  document.querySelectorAll(".suds-delta").forEach(d=>{
+    const st=sudsState[d.dataset.s]||{};
+    if(st.before!==undefined&&st.after!==undefined){
+      if(st.after<st.before) d.textContent="From "+st.before+" down to "+st.after+". That's your body letting go. Well done.";
+      else if(st.after===st.before) d.textContent="Holding at "+st.before+". Run one more round, slower this time.";
+      else d.textContent="It went up, which usually means you touched something real. Run one more round, or Voxer me.";
+    } else d.textContent="";
+  });
+}
+function initSuds(){
+  document.querySelectorAll(".suds").forEach(el=>{
+    const nums=el.querySelector(".suds-nums");
+    for(let n=0;n<=10;n++){
+      const b=document.createElement("button");
+      b.type="button"; b.textContent=n;
+      b.addEventListener("click",()=>setSuds(el.dataset.s,el.dataset.pos,n));
+      nums.appendChild(b);
+    }
+  });
+  renderSuds();
+}
+
+/* ============ guided pace ============ */
+const pacer={raf:null,speed:14,active:null,paused:false,last:undefined,acc:0};
+function paceLabel(){
+  return pacer.speed<=9?"very slow":pacer.speed<=15?"slow":pacer.speed<=23?"steady":"brisk";
+}
+function updatePacerUI(){
+  document.querySelectorAll(".pacer").forEach(p=>{
+    const on=pacer.active===p.dataset.s;
+    p.querySelector(".pace-toggle").textContent=on?(pacer.paused?"▶ Resume":"❚❚ Pause"):"▶ Start guided pace";
+    p.querySelector(".plabel").textContent="pace: "+paceLabel();
+  });
+}
+function stopPace(){
+  pacer.active=null;pacer.paused=false;pacer.last=undefined;pacer.acc=0;
+  if(pacer.raf){cancelAnimationFrame(pacer.raf);pacer.raf=null;}
+  updatePacerUI();
+}
+function stepPace(ts){
+  if(!pacer.active){pacer.raf=null;return;}
+  if(pacer.paused||pacer.last===undefined){pacer.last=ts;pacer.raf=requestAnimationFrame(stepPace);return;}
+  const dt=Math.min(ts-pacer.last,60);pacer.last=ts;
+  pacer.acc+=pacer.speed*dt/1000;
+  const px=Math.floor(pacer.acc);
+  if(px>=1){window.scrollBy(0,px);pacer.acc-=px;}
+  const d=document.getElementById("script-"+pacer.active);
+  const doc=document.documentElement;
+  const atDocEnd=window.innerHeight+window.scrollY>=doc.scrollHeight-2;
+  if((d&&d.getBoundingClientRect().bottom<=window.innerHeight-40)||atDocEnd){stopPace();return;}
+  pacer.raf=requestAnimationFrame(stepPace);
+}
+document.querySelectorAll(".pacer").forEach(p=>{
+  const sid=p.dataset.s;
+  p.querySelector(".pace-toggle").addEventListener("click",()=>{
+    if(pacer.active===sid){pacer.paused=!pacer.paused;pacer.last=undefined;pacer.acc=0;}
+    else{
+      const d=document.getElementById("script-"+sid);
+      if(d&&!d.open)d.open=true;
+      pacer.active=sid;pacer.paused=false;pacer.last=undefined;pacer.acc=0;
+      if(!pacer.raf)pacer.raf=requestAnimationFrame(stepPace);
+    }
+    updatePacerUI();
+  });
+  p.querySelector(".pace-slower").addEventListener("click",()=>{pacer.speed=Math.max(5,Math.round(pacer.speed*0.72));updatePacerUI();});
+  p.querySelector(".pace-faster").addEventListener("click",()=>{pacer.speed=Math.min(40,Math.round(pacer.speed/0.72));updatePacerUI();});
+});
+["wheel","touchmove"].forEach(ev=>{
+  window.addEventListener(ev,e=>{
+    if(e.target&&e.target.closest&&e.target.closest(".pacer"))return;
+    if(pacer.active&&!pacer.paused){pacer.paused=true;updatePacerUI();}
+  },{passive:true});
+});
+updatePacerUI();
+
+/* ============ wins ============ */
+let winLog=[];
+function renderWins(){
+  const el=document.getElementById("win-log");
+  if(!winLog.length){el.innerHTML='<div class="empty">Your first Skool review belongs here. Add it now.</div>';return;}
+  el.innerHTML=winLog.slice(0,30).map(i=>
+    '<div class="logitem"><div class="when">'+i.d+'</div><div class="what">✶ '+esc(i.t)+'</div></div>'
+  ).join("");
+}
+document.getElementById("win-add").addEventListener("click",async()=>{
+  const v=document.getElementById("win-in").value.trim();
+  if(!v) return;
+  winLog.unshift({t:v,d:nowStamp()});
+  await sSet("bessievip:wins",winLog);
+  document.getElementById("win-in").value="";
+  renderWins();
+});
+document.getElementById("win-in").addEventListener("keydown",e=>{
+  if(e.key==="Enter") document.getElementById("win-add").click();
+});
+
+const TASKS={
+  w1:[
+    {id:"t3",t:"Record your About page video and swap out the purple graphic",s:"Two minutes is plenty. Crystal crown on, angel wings behind you. Who you help, what they walk away with, and how to start. Loom or your phone both work."},
+    {id:"t4",t:"Check in with your two Portal ladies who are catching up",s:"A quick Voxer or DM during integration week. Let them know the new finish date, around October 14, and add it to the classroom."},
+    {id:"t5",t:"Share your September sacral chakra circle on Facebook",s:"Copy and paste the post, with a line about what came through in the circle and an invitation to the next one."},
+    {id:"t6",t:"Choose your daily time for other Skool groups",s:"Twenty minutes, same time each day. Only comment where a post genuinely pulls at you. Put it in your calendar so it stays."},
+    {id:"t7",t:"Ask three people for a testimonial by DM",s:"Free members or past clients who've told you what your work meant to them. Screenshot each reply as it comes in."},
+    {id:"t8",t:"Leave your review in Embody Wealth",s:"You wrote it down so you wouldn't forget. Here's your reminder."}
+  ],
+  w2:[
+    {id:"t9",t:"Decide your VIP price and your Portal price",s:"Ask your body: $111, $147 or $222 a month to start? And is $222 still right for the self-led Portal? Log both in Check In."},
+    {id:"t10",t:"Create the VIP tier in Skool with monthly and annual pricing",s:"Set the monthly price, turn on annual (around $1,111 a year at $111), and list what's included: Premium, one 1:1 call a month, Voxer, and the self-led Portal."},
+    {id:"t11",t:"Duplicate your live Portal classroom into a self-led version",s:"Unlock it for VIP. Add a line on each lesson: questions? DM me or send a Voxer. Take out anything tied to live dates."},
+    {id:"t12",t:"Set up the self-led Portal as a Buy Now for your chosen price",s:"Turn the affiliate commission off on this one. On the page, say: buy it once, or join VIP and it's included."},
+    {id:"t13",t:"Build a VIP welcome page with three steps",s:"1. Fill out your intake form. 2. Book your first call with me. 3. Download Voxer. That's the whole page."},
+    {id:"t14",t:"Make your testimonials page",s:"Place your screenshots on a simple ivory and gold background in Canva, then add them to one page in your community."},
+    {id:"t15",t:"Post about the self-led Portal in your community",s:"Share what the live ladies are finding, with their permission, and let people know a self-led version and VIP are coming. No hard sell."},
+    {id:"t16",t:"Record your first Monday chakra check-in and schedule it in SchoolKit",s:"Your Chakra Wellness Tool is ready. Loom yourself doing the check-in with it, share your result, and set it to repeat every Monday."}
+  ]
+};
+
+let doneSet={};
+function renderTasks(){
+  let total=0,done=0;
+  ["w1","w2"].forEach(w=>{
+    const el=document.getElementById("tasks-"+w); el.innerHTML="";
+    TASKS[w].forEach(t=>{
+      total++; const d=!!doneSet[t.id]; if(d)done++;
+      const row=document.createElement("div");
+      row.className="task"+(d?" done":""); row.tabIndex=0; row.setAttribute("role","checkbox"); row.setAttribute("aria-checked",d?"true":"false");
+      row.innerHTML='<div class="box">'+(d?"✓":"")+'</div><div><div class="tt">'+esc(t.t)+'</div><div class="ts">'+esc(t.s)+'</div></div>';
+      const toggle=async()=>{ doneSet[t.id]=!doneSet[t.id]; await sSet("bessievip:tasks",doneSet); renderTasks(); };
+      row.addEventListener("click",toggle);
+      row.addEventListener("keydown",e=>{ if(e.key===" "||e.key==="Enter"){e.preventDefault();toggle();} });
+      el.appendChild(row);
+    });
+  });
+  document.getElementById("prog-txt").textContent=done+" of "+total+" done";
+  document.getElementById("prog-fill").style.width=(total?Math.round(done/total*100):0)+"%";
+  const tick=document.getElementById("tick-plan"); if(tick) tick.classList.toggle("done",done===total&&total>0);
+}
+
+/* ============ util & init ============ */
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+(async function init(){
+  sacLog=(await sGet("bessievip:sacral"))||[];
+  waveLog=(await sGet("bessievip:wave"))||[];
+  winLog=(await sGet("bessievip:wins"))||[];
+  ideaLog=(await sGet("bessievip:ideas"))||[];
+  sudsState=(await sGet("bessievip:suds"))||{};
+  doneSet=(await sGet("bessievip:tasks"))||{};
+  renderTasks(); renderSac(); renderWave(); renderWins(); renderIdeas(); initSuds();
+})();
+</script>
+</body>
+</html>
