@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light">
-<title>Bessie, VIP Portal, September</title>
+<title>Bessie, VIP Portal, October</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Nunito:ital,wght@0,300..800;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
@@ -356,16 +356,6 @@ details.acc.script > .acc-body{padding:4px 19px 18px}
 .brand{position:relative}
 .bemark{width:54px;height:54px;border-radius:50%;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-size:21px;font-weight:600;letter-spacing:.06em;color:var(--gold)}
 .brand h1{font-size:25px;font-weight:600}
-.stars{position:absolute;inset:0;pointer-events:none;overflow:hidden;border-radius:16px}
-.stars i{position:absolute;width:3px;height:3px;border-radius:50%;background:var(--gold);box-shadow:0 0 6px 1px rgba(201,168,76,.7);animation:tw 4.5s ease-in-out infinite}
-.stars i:nth-child(1){top:6%;left:78%}
-.stars i:nth-child(2){top:14%;left:62%;animation-delay:1.2s;width:2px;height:2px}
-.stars i:nth-child(3){top:38%;left:88%;animation-delay:2.1s}
-.stars i:nth-child(4){top:57%;left:8%;animation-delay:.6s;width:2px;height:2px}
-.stars i:nth-child(5){top:71%;left:84%;animation-delay:3s}
-.stars i:nth-child(6){top:83%;left:22%;animation-delay:1.8s;width:2px;height:2px}
-.stars i:nth-child(7){top:3%;left:30%;animation-delay:2.6s;width:2px;height:2px}
-@keyframes tw{0%,100%{opacity:.25}50%{opacity:1}}
 .nav,.side-foot{position:relative}
 .side-foot{font-family:var(--ui)}
 h3.sec{font-size:25px}
@@ -433,11 +423,36 @@ body{background:var(--paper)}
 .lrow b{color:var(--ink)}
 .dec.okdec{border-left-color:var(--gold)}
 .dec.nodec{border-left-color:var(--muted)}
+.dec .dq .newtag{font-size:10.5px}
+.fpath{display:flex;align-items:stretch;gap:0}
+.fp-step{flex:1;min-width:0;background:var(--gold-wash);border:1px solid rgba(201,168,76,.45);border-radius:10px;padding:12px 12px 13px;display:flex;flex-direction:column}
+.fp-step.fp-end{background:var(--rose);border-color:rgba(178,34,52,.35)}
+.fp-n{width:24px;height:24px;border-radius:50%;background:var(--card);border:1.3px solid var(--gold);color:var(--gold-deep);font-family:var(--disp);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;margin-bottom:8px}
+.fp-end .fp-n{border-color:var(--rose-deep);color:var(--rose-deep)}
+.fp-step b{display:block;color:var(--ink);font-size:14.5px;line-height:1.3}
+.fp-d{display:block;font-size:12.5px;color:var(--muted);line-height:1.4;margin-top:3px}
+.fp-arrow{flex:0 0 26px;display:flex;align-items:center;justify-content:center}
+.fp-arrow svg{width:20px;height:20px;fill:none;stroke:var(--gold-deep);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+@media (max-width:700px){
+  .fpath{flex-direction:column}
+  .fp-step{flex-direction:row;flex-wrap:wrap;align-items:center;gap:0 10px}
+  .fp-n{margin-bottom:0}
+  .fp-step b{flex:1}
+  .fp-d{flex-basis:100%;padding-left:34px}
+  .fp-arrow{flex:0 0 30px}
+  .fp-arrow svg{transform:rotate(90deg)}
+}
+.tree{font-size:15px;line-height:1.55}
+.tree .tf{font-weight:700;color:var(--ink)}
+.tree .tn{font-weight:400;color:var(--muted);font-size:13.5px;margin-left:6px}
+.tree ul{list-style:none;margin:6px 0 8px 6px;padding-left:16px;border-left:1px solid var(--gold)}
+.tree li{margin:5px 0;color:var(--body)}
+.why{display:inline-block;margin-left:6px;font-size:11.5px;font-weight:700;letter-spacing:.04em;color:var(--gold-deep);background:var(--gold-wash);border-radius:20px;padding:1px 9px;vertical-align:1px}
 </style>
 </head>
 <body>
 <div class="mbar">
-  <div class="mtitle">Bessie's Portal <span>VIP September</span></div>
+  <div class="mtitle">Bessie's Portal <span>VIP October</span></div>
   <div class="mdd">
     <button type="button" class="mdd-btn" id="mdd-btn" aria-haspopup="listbox" aria-expanded="false">
       <span class="mdd-g" id="mdd-g">✦</span><span id="mdd-label">Welcome</span><span class="mdd-caret">▾</span>
@@ -447,11 +462,10 @@ body{background:var(--paper)}
 </div>
 <div class="shell">
 <aside class="side">
-  <div class="stars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
   <div class="brand">
     <div class="bemark" aria-hidden="true">BE</div>
     <h1>Bessie's Portal</h1>
-    <span class="vip">VIP, September 2026</span>
+    <span class="vip">VIP, October 2026</span>
   </div>
   <nav class="nav" id="nav"></nav>
   <div class="side-foot">Held by <b>Aurailia</b><br>BE more than do.</div>
@@ -461,36 +475,141 @@ body{background:var(--paper)}
 
 <!-- ================= WELCOME ================= -->
 <section class="view" id="v-welcome">
-  <div class="kicker">Welcome, Bessie</div>
-  <h2 class="title">Your room for the rest of September.</h2>
-  <p class="lede">Everything we talked about on our call lives here now. What we decided, what you're doing, what I'm doing, and a few small tools for the days that feel full. It saves what you write, so come back anytime.</p>
+  <div class="kicker">Welcome back, Bessie</div>
+  <h2 class="title">Your room for October.</h2>
+  <p class="lede">Everything from our October call lives here now. What we decided, what you're doing, what I'm doing, and the steps for the Skool pieces that are new to you. Last month's notes are still here too, in a September tab on the Recap and Plan pages.</p>
 
   <div class="next-call">
     <div class="cg">✦</div>
     <div>
-      <b>September 15 to 30: build the VIP doorway</b>
-      <div class="ncs">Two weeks. One new offer set up in Skool, one free tool path that leads to Premium, and your face on the About page.</div>
+      <b>October 6 to November 13: get the Portal ready to open</b>
+      <div class="ncs">One focus. Your live round wraps October 14, the self-led Portal opens around November 13, and your Inner Portal VIP goes live alongside it.</div>
     </div>
   </div>
 
   <h3 class="sec">A note from me</h3>
-  <p class="b">Bessie, you walked into that call with the Portal going well, your first Skool review in hand, and a brave call already made: giving the ladies an integration week instead of pushing them to keep up. That's you trusting what the room needed. It's the same thing you teach.</p>
-  <p class="b">So here's where we are. The live Portal is teaching you what the self-led version needs. Your Premium tier is set. The missing piece is the step between Premium and the full A.R.T. of Spiritual Living, and that's the VIP tier we mapped out together: you once a month, Voxer in between, and the self-led Portal included. You said even five women would feel wonderful. Five is a real number, and it fits a part-time week.</p>
-  <div class="whisper">You don't need three platforms and a big launch. You need one home, one clear next step, and women who can see your face.</div>
-  <p class="b">Start with the September Plan tab. Every task is small on purpose. Tap it when it's done and watch the month move.</p>
+  <p class="b">Bessie, you started our call by telling me about your bones, your heart, and the call you chose to skip that morning so you could take care of yourself. I want to say this first: that wasn't you falling behind. That was you listening. You have your physical therapist three days a week, your meal prep, and your health coach keeping you accountable. That's the ground everything else stands on.</p>
+  <p class="b">You also told me there are too many moving pieces right now. So this month has fewer of them. One focus: get your self-led Portal in order so it can open around November 13. Alongside it, your Inner Portal VIP at $147, and the first few hypnosis recordings moving out of SoundCloud and into your Premium Vault. The Reiki idea that's calling you back gets to simmer. It isn't going anywhere.</p>
+  <div class="whisper">"$1,000 a month is good for me." You said it, and it's very reachable. Seven Inner Portal VIPs gets you there.</div>
+  <p class="b">Two things are new this month: a Skool Map tab that shows where everything lives, and two new pages inside Your Design, Showing Up and Caring for You. Those pages are my answer to the question you asked at the end of our call. Start with the October Plan, and tap each task when it's done.</p>
 
   <h3 class="sec">How this portal works</h3>
   <div class="panel goldline">
     <p class="b" style="margin-bottom:10px"><b>It fills in as we go.</b> After each monthly call, the recap and the plan land here, so nothing lives in your head, your notebook, or a lost email.</p>
-    <p class="b" style="margin-bottom:0"><b>The tools are yours from today.</b> Check In, Idea Log, Tapping and the Wins Ledger save privately in this browser. If you open the portal on a different device, your notes won't follow, so pick one device and keep it there.</p>
+    <p class="b" style="margin-bottom:0"><b>The tools are yours.</b> Check In, Idea Log, Tapping and the Wins Ledger save privately in this browser. If you open the portal on a different device, your notes won't follow, so pick one device and keep it there.</p>
   </div>
 </section>
 
 <!-- ================= CALL RECAP ================= -->
 <section class="view" id="v-recap">
-  <div class="kicker">Our September call</div>
+  <div class="kicker">Our October call</div>
   <h2 class="title">What we covered.</h2>
   <p class="lede">The short version of our call, so you don't have to remember it all. Open any section for the details.</p>
+
+  <div class="stabs" role="tablist">
+    <button type="button" class="stab on" data-sub="rc-oct">October</button>
+    <button type="button" class="stab" data-sub="rc-sep">September</button>
+  </div>
+
+  <div class="subview on" id="rc-oct">
+  <details class="acc" open>
+    <summary><span class="ag">✦</span>Your health comes first<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>You found an online physical therapist through Medicare, three days a week, for your bones. Your health coach keeps you accountable on food, and you're meal prepping so you know exactly what you're eating, snacks included. You said you don't want to tax your heart, and you meant it.</p>
+      <p>You also noticed something worth keeping: when you get overloaded, you feel the stress in your body, and you stop and breathe. That morning you skipped Victoria's VIP call to take care of yourself. It's the same skill you'd want for any woman you work with. It also tells us how to build this month: fewer pieces, smaller steps, and nothing that needs you to push.</p>
+    </div>
+  </details>
+
+  <details class="acc">
+    <summary><span class="ag">✦</span>One focus: the self-led Portal<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>The live round wraps October 14. Your numerologist coach suggested you start talking about the self-led Portal now and open it on November 13, since there's a lot of retrograde energy toward the end of October. That gives you about five weeks, which is plenty if we keep it simple.</p>
+      <p>The next live group can wait. You're feeling the beginning of the year for that, so the self-led version gets your full attention now. And your money goal for right now is $1,000 a month. Clear, and within reach.</p>
+    </div>
+  </details>
+
+  <details class="acc">
+    <summary><span class="ag">✦</span>The Inner Portal VIP<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>You've named it and priced it: the Inner Portal VIP, $147 a month. One-on-one guidance, personalized healing, exclusive support. You let go of the quarterly 90-minute call (your Sacral said no right there on the call) and kept it simple: one hour a month.</p>
+      <p>The call doesn't need prep. You ask where she needs support and what you're working on this month. Then you do what I do with you: download the transcript, give it to Claude, and turn it into her own portal with a 30-day plan. Add Voxer in between and that's plenty for $147. Around five to seven VIPs is something you can hold. Later you can add a VIP-only extra, like a distance energy healing once a month or once a quarter.</p>
+      <p>The hypnosis library goes to Premium, not just VIP. What VIPs pay for is you.</p>
+    </div>
+  </details>
+
+  <details class="acc">
+    <summary><span class="ag">✦</span>A signature session: chakras and Reiki<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>I shared an idea I'm building into my own work: one really valuable one-off session, like my Business Alignment Blueprint, that gives people real steps for the next 21 to 30 days and a clear way to keep going with you. Your assessment call is built for Quantum Journeys Hypnosis, so this would be its own thing.</p>
+      <p>You lit up. Chakras are your jam, and Reiki has been calling you back. You're a Reiki Master Teacher. You told me how you used to work: she shares what's going on in her life, you track each chakra with the pendulum, give her a Reiki session, check again with the pendulum, and every chakra comes back balanced. Then she'd go home with affirmations. You said a hypnosis would be a beautiful addition.</p>
+      <p>I told you how I used to offer mine. It wasn't on Zoom. She booked a date and time, lay down at home and listened to a recorded chakra hypnosis, about 20 minutes, while I did the healing from my own space with my chakra layout and pendulum. Afterward I emailed her a short 5 to 8 minute voice note of anything I saw or felt, plus a hypnosis to listen to for 7 or 21 days. I started at $55 and went to $111.</p>
+      <p>You want to think on it. Good. It could be the first way people work with you, and a lovely extra for VIPs. It's in your Decisions for after November 13.</p>
+    </div>
+  </details>
+
+  <details class="acc">
+    <summary><span class="ag">✦</span>Your hypnosis library<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>You have a lot of hypnosis recordings that were never uploaded. Most are in SoundCloud, and some are on your phone. With paid SoundCloud you can download them all into one folder on your computer and hand that folder to your VA.</p>
+      <p>They go in the Premium Vault, because they're tools for mind, body and spirit. The Vault description changes to say so: "Hypnosis and various tools for your mind, body, and spirit." Inside, a Self-Care folder holds what's there now, and a Hypnosis folder holds one page per need: anxiety, your nervous system, cell regeneration, money, self-care, the chakras. Each page can hold several recordings, linked straight to SoundCloud with the tracks set to private.</p>
+      <p>Add a couple each month instead of everything at once. Members see something new every month, and the library keeps growing without you making anything new. If someone leaves Premium and keeps a link, let it go. That's on them.</p>
+      <p>You also love how Victoria's Believe app shows each hypnosis with a pretty background, the title and the length. Skool lets you add an image to a page, but it comes up very large. I'm building a hypnosis library artifact for myself that works more like that app, with categories and thumbnails, and I'll share the HTML with you once I've tested it.</p>
+    </div>
+  </details>
+
+  <details class="acc">
+    <summary><span class="ag">✦</span>Between the Circle<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>You want to give Premium members something between the monthly circles: a short hypnosis, a sound bath and journal prompts around one chakra. You asked if doing it every week was setting yourself up. It would be. One set a month is plenty.</p>
+      <p>It doesn't need its own classroom. It's connected to the circle, so it lives as a folder called Between the Circle inside your Monthly Chakra Sound and Hypnosis classroom, right alongside your replays. Members have one place to go for everything circle-related.</p>
+      <p>Here's the rhythm. This month's hypnosis and sound bath sit in the Between the Circle folder. When next month's set goes up, last month's moves into the Premium Vault under Hypnosis for the Chakras. Members always have one fresh set, and the Vault fills itself.</p>
+      <p>The first two months of replays stay where they are. It's all Premium, so nothing else needs to move.</p>
+    </div>
+  </details>
+
+  <details class="acc">
+    <summary><span class="ag">✦</span>Untangling the Portal classrooms<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>The Portal, Your Invitation was set up for the live cohort, and it still has old week pages (the Suno ones too) you're not using. Those come out, along with the pre-work. The classroom becomes a short welcome: what the Portal is, a video of you talking about it, and a link to the self-led program.</p>
+      <p>Add one page called The Portal Live Experience, with a link to a waitlist on your website. Women who want to do it with you can raise their hand, and you'll see how many are interested before you plan the next live round.</p>
+      <p>Then the program itself. With SchoolKit you can copy a whole classroom. Keep the original, rename it The Portal Live, Student Access Only, and set its lessons to draft until you run it live again. The copy becomes your self-led signature program. Once the live round wraps, give your live ladies, like Linda, access to the self-led one and remove their access to the live one. The steps are in Your Skool Map.</p>
+    </div>
+  </details>
+
+  <details class="acc">
+    <summary><span class="ag">✦</span>SchoolKit<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>You'd installed the Chrome extension but couldn't get in. The missing step is connecting it to your community: click the SchoolKit icon at the top of Chrome, then Connect your community. You should see your plan and your community under connected communities. After that, your classrooms show up in SchoolKit and you can copy them.</p>
+      <p>I'm also asking Skool whether a classroom can show only its first module and lock the rest. If it can, women could try the first module of the Portal before they buy.</p>
+    </div>
+  </details>
+
+  <details class="acc">
+    <summary><span class="ag">✦</span>Music for your recordings<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>You want music under some of your hypnosis without paying $75 to $100 a track. Since you're selling inside Skool, you need a license that covers that. I buy mine from Zenmix (zenmix.io). We saw a Deep Hypnosis Music bundle of six tracks for $69, which I think was on sale, since I'd seen it at $131. I also like their Ancient Healing track. Audio Jungle is another option.</p>
+      <p>One thing to watch: the $99 chakra collection we opened turned out to be scripts only, not music. Check that a listing says music before you buy.</p>
+    </div>
+  </details>
+
+  <details class="acc">
+    <summary><span class="ag">✦</span>Showing up without wearing yourself out<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>You skipped day three of the challenge, and that's okay. The point isn't posting every single day. It's not disappearing for weeks and then starting over.</p>
+      <p>Here's what's working for me: on a day I'm lit up, I write a batch of posts and keep them in a library, with a Canva folder of photos ready to go. On days I'm not feeling it, I copy one and post it. On days something lights me up, a client call or a download, I share that instead. Your VA could even do the copy and paste for you.</p>
+    </div>
+  </details>
+
+  <details class="acc">
+    <summary><span class="ag">✦</span>Your blueprint and how you show up<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>At the end of our call you asked how your blueprint relates to showing up. You'll find the answer in Your Design, in two places. Showing Up has simple practices for being seen without forcing it. Caring for You has what your design says about protecting your energy, your heart and your peace.</p>
+    </div>
+  </details>
+  </div>
+
+  <div class="subview" id="rc-sep">
+  <p class="b" style="margin-top:18px">Last month's call, kept here so you can look back.</p>
 
   <details class="acc" open>
     <summary><span class="ag">✦</span>The live Portal cohort<span class="caret">›</span></summary>
@@ -569,14 +688,90 @@ body{background:var(--paper)}
       <p>My newest VIP found me through a comment I left in someone else's group. She joined Standard and upgraded to VIP the same day. You said you want to set aside a certain time each day for this. Yes. It suits your design too: you're not pitching, you're responding to posts that genuinely pull at you.</p>
     </div>
   </details>
+  </div>
 </section>
 
-<!-- ================= SEPTEMBER PLAN ================= -->
+<!-- ================= PLAN ================= -->
 <section class="view" id="v-plan">
   <div class="kicker">The plan</div>
-  <h2 class="title">September 15 to 30.</h2>
-  <p class="lede">Two weeks, in order. Before you start any task, ask your gut if today is the day for it. If the answer is flat, pick a different one. They're all small enough to do in one sitting.</p>
+  <h2 class="title">October 6 to November 13.</h2>
+  <p class="lede">Four short weeks, then the Portal opens. Before you start any task, ask your gut if today is the day for it. Rest days count. Nothing here needs to happen on a day your body says no.</p>
 
+  <div class="stabs" role="tablist">
+    <button type="button" class="stab on" data-sub="pl-oct">October</button>
+    <button type="button" class="stab" data-sub="pl-sep">September</button>
+  </div>
+
+  <div class="subview on" id="pl-oct">
+  <div class="focus">
+    <div class="focus-h">Our focus for October</div>
+    <p class="focus-lede">Everything below serves one goal: your self-led Portal ready to open around November 13, with fewer moving pieces, not more.</p>
+    <div class="frow"><div class="fn">1</div><div><b>Get the Portal ready</b><span>Clear out the old classroom pages, copy the live Portal into a self-led signature program, and turn Your Invitation into a simple welcome with a waitlist for the next live round.</span></div></div>
+    <div class="frow"><div class="fn">2</div><div><b>Open the Inner Portal VIP</b><span>Publish it at $147 a month and personally invite a few women who already know your work.</span></div></div>
+    <div class="frow"><div class="fn">3</div><div><b>Start your hypnosis library, slowly</b><span>Recordings out of SoundCloud, two hypnoses into the Premium Vault, and your first Between the Circle set.</span></div></div>
+    <div class="frow"><div class="fn">4</div><div><b>Take care of your heart</b><span>Physical therapy, meal prep and rest come first. Reiki gets to simmer until after the Portal opens, and YouTube waits for you too.</span></div></div>
+    <p class="focus-end"><b>By November 13:</b> the self-led Portal is open, the Inner Portal VIP is live, and your library has its first recordings.</p>
+  </div>
+
+  <div class="progress-shell">
+    <div class="progress-top"><span class="pt-l">Your progress</span><span class="pt-r" id="prog-txt">0 of 0 done</span></div>
+    <div class="pbar"><div class="fill" id="prog-fill"></div></div>
+  </div>
+
+  <div class="week">
+    <h4>Week one: clear the clutter <span class="wd">Oct 6 to 12</span></h4>
+    <div class="wnote">Small clean-up tasks you can do in short sittings. If it's one of those days, skip it. The week is long enough.</div>
+    <div id="tasks-o1"></div>
+  </div>
+
+  <div class="week">
+    <h4>Week two: close the live round <span class="wd">Oct 13 to 19</span></h4>
+    <div class="wnote">Your live ladies finish on October 14. Celebrate them, then move everyone into the new home.</div>
+    <div id="tasks-o2"></div>
+  </div>
+
+  <div class="week">
+    <h4>Week three: shape the welcome <span class="wd">Oct 20 to Nov 1</span></h4>
+    <div class="wnote">This is the stretch that turns the Portal into something a woman can walk into on her own.</div>
+    <div id="tasks-o3"></div>
+  </div>
+
+  <div class="week">
+    <h4>Week four: open the door <span class="wd">Nov 2 to 13</span></h4>
+    <div class="wnote">Start telling people. You don't need a big launch. You need the women who already love your work to hear it from you.</div>
+    <div id="tasks-o4"></div>
+  </div>
+
+  <h3 class="sec">What I'm taking off your plate</h3>
+  <div class="panel goldline">
+    <span class="pill">AURAILIA</span>
+    <ul class="mine">
+      <li class="doneitem"><b>Your Showing Up page. Done.</b> Practices built from your blueprint so you can keep your energy and still be seen. It's in Your Design.</li>
+      <li class="doneitem"><b>Your Skool Map. Done.</b> Where every classroom lives, how the Vault is laid out, and the SchoolKit steps.</li>
+      <li><b>A hypnosis library that feels like an app.</b> I'm building one for myself, with categories and thumbnails like Victoria's Believe app. Once it's tested, I'll share the HTML with you.</li>
+      <li><b>Asking Skool</b> whether a classroom can show only its first module and lock the rest, so women can try the Portal before they buy.</li>
+      <li><b>A waitlist for The Portal Live Experience.</b> If you don't have one on your website yet, I'll set it up in Wix.</li>
+      <li><b>The HTML for this portal</b>, so you can make one for each Inner Portal VIP after her call.</li>
+      <li><b>Still on my list from September:</b> the Chakra Quiz and Vagus Nerve Relaxation tool updates, the brand pass on your Chakra Oracle Card, and the landing page.</li>
+      <li><b>Any Wix changes.</b> Send me what you want changed and I'll go in and do it.</li>
+    </ul>
+  </div>
+
+  <h3 class="sec">Decisions only you can make</h3>
+  <p class="b">Say each one out loud as a yes or no question and follow the first sound your body makes. Log it in Check In if you want a record.</p>
+  <div class="decgrid">
+    <div class="dec"><div class="dq">Opening day</div><div class="da">November 13, as your numerologist suggested? It's a Friday, outside your Monday to Wednesday days, so write the post ahead and let SchoolKit send it.</div></div>
+    <div class="dec"><div class="dq">Self-led Portal price</div><div class="da">$222 felt right last month. Is it still a yes?</div></div>
+    <div class="dec"><div class="dq">Is the Portal included in VIP?</div><div class="da">Last month's plan said yes. Your new VIP description leads with guidance, healing and support. Decide before you publish.</div></div>
+    <div class="dec"><div class="dq">Your work days and PT</div><div class="da">Physical therapy is Monday, Wednesday and Friday, and your client days are Monday to Wednesday. Do calls fit around PT, or do your days shift?</div></div>
+    <div class="dec"><div class="dq">The Reiki chakra session</div><div class="da">A paid first step, a VIP extra, or both? And a price to start. This one waits until after November 13.</div></div>
+    <div class="dec"><div class="dq">The next live round</div><div class="da">The beginning of the year feels right to you. Let the waitlist show you how many women are interested first.</div></div>
+    <div class="dec"><div class="dq">Library links</div><div class="da">Private SoundCloud links on Skool pages now, or wait for the library artifact? You can start with links and switch later.</div></div>
+  </div>
+  </div>
+
+  <div class="subview" id="pl-sep">
+  <p class="b" style="margin-top:18px">Last month's plan. Your ticks are saved here. Anything still open that matters has a place in October.</p>
   <div class="focus">
     <div class="focus-h">Our focus for September</div>
     <p class="focus-lede">Everything below serves one goal: open your VIP tier so women have a clear next step between Premium and the A.R.T. of Spiritual Living.</p>
@@ -588,23 +783,23 @@ body{background:var(--paper)}
   </div>
 
   <div class="progress-shell">
-    <div class="progress-top"><span class="pt-l">Your progress</span><span class="pt-r" id="prog-txt">0 of 0 done</span></div>
-    <div class="pbar"><div class="fill" id="prog-fill"></div></div>
+    <div class="progress-top"><span class="pt-l">Your progress</span><span class="pt-r" id="prog-txt-s">0 of 0 done</span></div>
+    <div class="pbar"><div class="fill" id="prog-fill-s"></div></div>
   </div>
 
   <div class="week">
     <h4>Week one: clear the path <span class="wd">Sept 15 to 21</span></h4>
     <div class="wnote">Your Portal ladies are in integration week, which gives you a little breathing room. Use it for the quick fixes and the one video.</div>
-    <div id="tasks-w1"></div>
+    <div id="tasks-s1"></div>
   </div>
 
   <div class="week">
     <h4>Week two: build the VIP doorway <span class="wd">Sept 22 to 30</span></h4>
     <div class="wnote">Set up the new tier in Skool and start letting people know it's coming. If a step in Skool gets confusing, Voxer me a screen recording and I'll walk you through it.</div>
-    <div id="tasks-w2"></div>
+    <div id="tasks-s2"></div>
   </div>
 
-  <h3 class="sec">What I'm taking off your plate</h3>
+  <h3 class="sec">What I took off your plate in September</h3>
   <div class="panel goldline">
     <span class="pill">AURAILIA</span>
     <ul class="mine">
@@ -619,7 +814,7 @@ body{background:var(--paper)}
     <p class="b" style="margin:12px 0 0;font-size:14.5px"><b>Next up:</b> the Chakra Quiz and Vagus Nerve Relaxation tool updates. Thank you for sending both files.</p>
   </div>
 
-  <h3 class="sec">Decisions only you can make</h3>
+  <h3 class="sec">September decisions</h3>
   <p class="b">Say each one out loud as a yes or no question and follow the first sound your body makes. Log it in Check In if you want a record.</p>
   <div class="decgrid">
     <div class="dec"><div class="dq">VIP price to start</div><div class="da">$111, $147 or $222 a month. Most people start low for the first five spots, then raise it.</div></div>
@@ -628,6 +823,7 @@ body{background:var(--paper)}
     <div class="dec"><div class="dq">When the self-led Portal opens</div><div class="da">Now, or after the live cohort finishes around October 14? Opening after gives you their feedback first.</div></div>
     <div class="dec"><div class="dq">Portal access for A.R.T. clients</div><div class="da">Three months of access that you remove at the end, or a gift they keep?</div></div>
     <div class="dec"><div class="dq">Your VA and GoHighLevel</div><div class="da">Is there a job you want her doing there beyond the speakers event? If it's course delivery, let's talk first.</div></div>
+  </div>
   </div>
 </section>
 
@@ -642,35 +838,42 @@ body{background:var(--paper)}
       <div class="rl">Free</div>
       <div class="rb">
         <div class="rn">Your Skool community, Standard</div>
-        <div class="rd">Chakra Quiz, Chakra Oracle Card, Vagus Nerve Relaxation tool, and the healing circle replay. Each tool ends by pointing to the Chakra Wellness Tool in Premium.</div>
+        <div class="rd">Chakra Quiz, Chakra Oracle Card, Vagus Nerve Relaxation tool, and one free circle replay. The live monthly circle is Premium. Each tool ends by pointing to the Chakra Wellness Tool in Premium.</div>
       </div>
     </div>
     <div class="rung">
       <div class="rl">$11 a month<br><span>$9 a month annually</span></div>
       <div class="rb">
         <div class="rn">Premium</div>
-        <div class="rd">Monthly chakra sound and hypnosis, the Premium Vault, and the new Chakra Wellness Tool. The Monday check-in post invites people here.</div>
+        <div class="rd">Monthly chakra sound and hypnosis, a new Between the Circle set each month, and the Premium Vault with your growing hypnosis library and the Chakra Wellness Tool. The Monday check-in post invites people here.</div>
+      </div>
+    </div>
+    <div class="rung">
+      <div class="rl">Exploring<br><span>price to decide</span></div>
+      <div class="rb">
+        <div class="rn">Chakra reading and Reiki <span class="newtag" style="background:var(--gold);color:var(--ink)">idea</span></div>
+        <div class="rd">A distance session with your pendulum and Reiki, a recorded chakra hypnosis to keep listening to, and a short voice note of what came through. A gentle first way to work with you, or a VIP extra. Deciding after November 13.</div>
       </div>
     </div>
     <div class="rung hot">
-      <div class="rl">$111 a month<br><span>to start, you decide</span></div>
+      <div class="rl">$147 a month<br><span>decided</span></div>
       <div class="rb">
-        <div class="rn">VIP <span class="newtag">new</span></div>
-        <div class="rd">Everything in Premium, one 1:1 call with you each month, Voxer support, and the self-led Portal included while they're a member. Five spots to start.</div>
+        <div class="rn">The Inner Portal VIP <span class="newtag">new</span></div>
+        <div class="rd">Everything in Premium, one hour with you each month, a 30-day plan after every call, and Voxer support in between. Whether the self-led Portal is included is yours to confirm. Five to seven spots.</div>
       </div>
     </div>
     <div class="rung">
-      <div class="rl">$222 once<br><span>price to confirm</span></div>
+      <div class="rl">$222 once<br><span>opens Nov 13</span></div>
       <div class="rb">
         <div class="rn">The Portal, self-led</div>
-        <div class="rd">The eight-week program to do at their own pace, bought right inside Skool with the affiliate fee turned off. Or included with VIP.</div>
+        <div class="rd">The eight-week program to do at their own pace, bought right inside Skool with the affiliate fee turned off. Price to confirm.</div>
       </div>
     </div>
     <div class="rung">
-      <div class="rl">Live cohort</div>
+      <div class="rl">Live cohort<br><span>next round from the waitlist</span></div>
       <div class="rb">
         <div class="rn">The Portal, live</div>
-        <div class="rd">For women who want to go through it with you and a small group. The current cohort wraps around October 14.</div>
+        <div class="rd">For women who want to go through it with you and a small group. This round wraps October 14. The next one fills from the waitlist, likely at the start of the year.</div>
       </div>
     </div>
     <div class="rung">
@@ -682,23 +885,160 @@ body{background:var(--paper)}
     </div>
   </div>
 
-  <h3 class="sec">What five VIPs looks like</h3>
+  <h3 class="sec">Your $1,000 month</h3>
   <div class="facts">
-    <div class="fact"><div class="fl">At $111</div><div class="fv">$555 a month</div><div class="fs">Five hours of calls a month</div></div>
-    <div class="fact"><div class="fl">At $147</div><div class="fv">$735 a month</div><div class="fs">Same five hours</div></div>
-    <div class="fact"><div class="fl">At $222</div><div class="fv">$1,110 a month</div><div class="fs">Same five hours</div></div>
+    <div class="fact"><div class="fl">Seven VIPs</div><div class="fv">$1,029 a month</div><div class="fs">Seven hours of calls a month</div></div>
+    <div class="fact"><div class="fl">Five VIPs and one Portal</div><div class="fv">$957 that month</div><div class="fs">Five hours of calls</div></div>
+    <div class="fact"><div class="fl">Four VIPs and two Portals</div><div class="fv">$1,032 that month</div><div class="fs">Four hours of calls</div></div>
   </div>
-  <p class="b">That's recurring, before any A.R.T. clients, sessions or Portal sales. And it fits the two to three client days a week you told me you want to keep, for years. That is a real business, not a hobby. Figures are before Skool's fees and any affiliate commission.</p>
+  <p class="b">The VIPs are the steady part, because they renew each month. Portal sales come and go. Either way, it fits the two to three client days a week you told me you want to keep, for years. That is a real business, not a hobby. Figures are before Skool's fees and any affiliate commission, and the Portal figures use $222.</p>
 
   <h3 class="sec">What the free tool path looks like</h3>
   <div class="panel">
-    <div class="crumbs">
-      <div class="crumb"><b>A post or comment</b><span>in your group or someone else's</span></div>
-      <div class="crumb"><b>A free tool</b><span>quiz, oracle card or vagus nerve practice</span></div>
-      <div class="crumb"><b>Their result</b><span>and one simple practice</span></div>
-      <div class="crumb"><b>What's next</b><span>the full Chakra Wellness Tool in Premium</span></div>
-      <div class="crumb"><b>VIP</b><span>when they want you, not just the tools</span></div>
+    <div class="fpath" role="list">
+      <div class="fp-step"><span class="fp-n">1</span><b>A post or comment</b><span class="fp-d">in your group or someone else's</span></div>
+      <div class="fp-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h14M13 6l6 6-6 6"/></svg></div>
+      <div class="fp-step"><span class="fp-n">2</span><b>A free tool</b><span class="fp-d">quiz, oracle card or vagus nerve practice</span></div>
+      <div class="fp-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h14M13 6l6 6-6 6"/></svg></div>
+      <div class="fp-step"><span class="fp-n">3</span><b>Their result</b><span class="fp-d">and one simple practice</span></div>
+      <div class="fp-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h14M13 6l6 6-6 6"/></svg></div>
+      <div class="fp-step"><span class="fp-n">4</span><b>What's next</b><span class="fp-d">the full Chakra Wellness Tool in Premium</span></div>
+      <div class="fp-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h14M13 6l6 6-6 6"/></svg></div>
+      <div class="fp-step fp-end"><span class="fp-n">5</span><b>The Inner Portal VIP</b><span class="fp-d">when they want you, not just the tools</span></div>
     </div>
+  </div>
+</section>
+
+<!-- ================= SKOOL MAP ================= -->
+<section class="view" id="v-skool">
+  <div class="kicker">Where everything lives</div>
+  <h2 class="title">Your Skool map.</h2>
+  <p class="lede">One home, clearly labeled. Where each piece lives, what changes this month, and the steps for the parts that are new to you.</p>
+
+  <div class="stabs" role="tablist">
+    <button type="button" class="stab on" data-sub="sk-rooms">Classrooms</button>
+    <button type="button" class="stab" data-sub="sk-vault">Vault and library</button>
+    <button type="button" class="stab" data-sub="sk-how">How to</button>
+  </div>
+
+  <div class="subview on" id="sk-rooms">
+  <h3 class="sec">Your classrooms after this month</h3>
+  <div class="decgrid">
+    <div class="dec"><div class="dq">The Portal, Your Invitation</div><div class="da">Becomes a short welcome: what the Portal is, your video, a link to the self-led program, and a page for The Portal Live Experience with your waitlist. The old week pages, the Suno pages and the pre-work come out.</div></div>
+    <div class="dec"><div class="dq">The Portal, self-led <span class="newtag">new</span></div><div class="da">A copy of the live classroom, made with SchoolKit. Bought once, or included with VIP if you decide so. Opens around November 13.</div></div>
+    <div class="dec okdec"><div class="dq">The Portal Live, Student Access Only</div><div class="da">The original classroom, renamed. Lessons stay in draft between rounds and unlock one a week when you run it live again.</div></div>
+    <div class="dec"><div class="dq">Monthly Chakra Sound and Hypnosis</div><div class="da">Premium. Your circle replays stay here, plus a new Between the Circle folder <span class="newtag">new</span> with this month's short hypnosis, sound bath and journal prompts, replaced each month.</div></div>
+    <div class="dec"><div class="dq">Premium Vault</div><div class="da">Premium. Hypnosis and various tools for your mind, body, and spirit. Your growing library lives here.</div></div>
+    <div class="dec"><div class="dq">The Inner Portal VIP</div><div class="da">$147 a month. Your three-step VIP welcome: intake form, book your call, download Voxer.</div></div>
+  </div>
+  <div class="panel goldline">
+    <span class="pill">ONE QUESTION FOR ANYTHING NEW</span>
+    <p class="b" style="margin-bottom:0">Is this for everyone, for Premium, or for VIP? The answer tells you which room it goes in, and you never have to wonder where something lives.</p>
+  </div>
+  </div>
+
+  <div class="subview" id="sk-vault">
+  <h3 class="sec">Inside the Premium Vault</h3>
+  <div class="panel">
+    <div class="tree">
+      <div class="tf">Premium Vault <span class="tn">Hypnosis and various tools for your mind, body, and spirit</span></div>
+      <ul>
+        <li><div class="tf">Self-Care <span class="tn">what's there now, like your Chakra Wellness Guide</span></div></li>
+        <li><div class="tf">Hypnosis</div>
+          <ul>
+            <li>Hypnosis for Anxiety</li>
+            <li>Hypnosis for Your Nervous System</li>
+            <li>Hypnosis for Cell Regeneration</li>
+            <li>Hypnosis for Money</li>
+            <li>Hypnosis for Self-Care</li>
+            <li>Hypnosis for the Chakras <span class="tn">past Between the Circle sets land here</span></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <p class="b" style="margin:14px 0 0;font-size:14.5px">Each page can hold several recordings. Add a page only when you have something to put on it, and rename any of these so they sound like you.</p>
+  </div>
+
+  <h3 class="sec">The monthly rhythm</h3>
+  <div class="panel">
+    <div class="crumbs">
+      <div class="crumb"><b>This month</b><span>one set in the Between the Circle folder of your Monthly Chakra classroom</span></div>
+      <div class="crumb"><b>Next month</b><span>a new set goes up</span></div>
+      <div class="crumb"><b>Last month's set</b><span>moves to Hypnosis for the Chakras</span></div>
+      <div class="crumb"><b>Plus two</b><span>recordings from your folder go into the Vault</span></div>
+    </div>
+  </div>
+  <p class="b">Two recordings a month is plenty. Members watch the Vault grow, and you're not making anything new to do it. With what's already sitting in SoundCloud, that could carry you well into next year.</p>
+
+  <h3 class="sec">Getting your recordings out of SoundCloud</h3>
+  <div class="panel">
+    <ol class="steps" style="margin-bottom:0">
+      <li>Log into SoundCloud. Your paid account lets you download your own tracks.</li>
+      <li>Download each one into a single folder on your computer.</li>
+      <li>Add the ones you recorded on your phone.</li>
+      <li>Rename each file for what it helps with, like Anxiety or Heart Chakra.</li>
+      <li>Set the tracks to private in SoundCloud and use the private link on each Skool page.</li>
+      <li>Share the folder with your VA and tell her which category to start with.</li>
+    </ol>
+  </div>
+  <p class="b" style="font-size:14.5px">If someone leaves Premium and keeps a link, let it go. That's on them, not you.</p>
+
+  <h3 class="sec">Later: a library that feels like an app</h3>
+  <p class="b">You love how Victoria's Believe app shows each hypnosis with a background, the title and the length. Skool images come up too large to do that nicely, so I'm building a hypnosis library artifact for myself with categories, thumbnails and what's new. Once it's tested I'll share the HTML, and your library can move into it. Until then, Skool pages with links work fine.</p>
+
+  <h3 class="sec">Music for your recordings</h3>
+  <div class="decgrid">
+    <div class="dec okdec"><div class="dq">Zenmix</div><div class="da">zenmix.io, where I buy mine. Pay once and it's yours. The Deep Hypnosis Music bundle of six tracks was $69 when we looked. Their Ancient Healing track is lovely.</div></div>
+    <div class="dec okdec"><div class="dq">Audio Jungle</div><div class="da">Another place to buy single tracks.</div></div>
+    <div class="dec nodec"><div class="dq">Watch for</div><div class="da">Listings that are scripts only, like the $99 chakra collection we opened. Check it says music, and that the license covers selling inside a paid membership.</div></div>
+  </div>
+  </div>
+
+  <div class="subview" id="sk-how">
+  <h3 class="sec">Step by step</h3>
+  <details class="acc" open>
+    <summary><span class="ag">1</span>Connect SchoolKit to your community<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <ol class="steps" style="margin-bottom:0">
+        <li>Open Chrome and click the SchoolKit icon at the top of your browser.</li>
+        <li>Click Connect your community.</li>
+        <li>You should see your plan and your community listed under connected communities.</li>
+        <li>Your classrooms now show up inside SchoolKit.</li>
+      </ol>
+    </div>
+  </details>
+  <details class="acc">
+    <summary><span class="ag">2</span>Copy the live Portal classroom<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <ol class="steps" style="margin-bottom:0">
+        <li>In SchoolKit, go to Classrooms and choose the live Portal.</li>
+        <li>Click Copy whole classroom.</li>
+        <li>Rename the original The Portal Live, Student Access Only, and set its lessons to draft.</li>
+        <li>Name the copy as your self-led signature program, and edit it for going solo.</li>
+      </ol>
+    </div>
+  </details>
+  <details class="acc">
+    <summary><span class="ag">3</span>Move a live student into the self-led Portal<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <ol class="steps" style="margin-bottom:0">
+        <li>In Skool, go to Members and open her profile.</li>
+        <li>Go to Membership, then Courses.</li>
+        <li>Select the self-led Portal and give her access.</li>
+        <li>Find the live Portal and click Remove access.</li>
+      </ol>
+      <p style="margin-top:10px">Do this after the live round wraps on October 14, so nobody loses a lesson in the middle.</p>
+    </div>
+  </details>
+  <details class="acc">
+    <summary><span class="ag">4</span>Run the live round again later<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>When you're ready for the next live group, give the new students access to The Portal Live, Student Access Only, and unlock one module each week as you go. When it ends, move them into the self-led Portal the same way.</p>
+    </div>
+  </details>
+  <div class="panel" style="margin-top:18px">
+    <p class="b" style="margin-bottom:0"><b>Stuck on a step?</b> Voxer me a screen recording and I'll walk you through it.</p>
+  </div>
   </div>
 </section>
 
@@ -707,6 +1047,11 @@ body{background:var(--paper)}
   <div class="kicker">Growing your community</div>
   <h2 class="title">YouTube and getting seen.</h2>
   <p class="lede">You want YouTube to be your main place to show up, and it's a great fit. People search it for exactly what you teach: chakras, calming anxiety, guided meditation, hypnosis, grief. A good video keeps bringing women to you for years, long after you post it. Every video has one job: invite her into your free Skool community.</p>
+
+  <div class="panel goldline">
+    <span class="pill rosep">RESTING UNTIL THE PORTAL OPENS</span>
+    <p class="b" style="margin-bottom:0">You told me there are too many moving pieces, so YouTube isn't on October's list. Everything here is waiting for you after November 13. If a video calls to you before then, follow it.</p>
+  </div>
 
   <div class="stabs" role="tablist">
     <button type="button" class="stab on" data-sub="yt-strategy">Strategy</button>
@@ -761,7 +1106,7 @@ body{background:var(--paper)}
     <div class="dec"><div class="dq">Teaching videos</div><div class="da">Ten to fifteen minutes on one question. What is a blocked chakra? What does hypnosis actually feel like? How do I trust my intuition?</div></div>
     <div class="dec"><div class="dq">Chakra Wellness Tool preview</div><div class="da">Share your screen and do your own check-in. Show your result and one practice, then invite them to find the full tool in Premium.</div></div>
     <div class="dec"><div class="dq">A tour of your Skool community</div><div class="da">Walk through it like you're showing a friend around your home: the free tools, the circles, the Portal, and how to join.</div></div>
-    <div class="dec"><div class="dq">Healing circle clips</div><div class="da">Your teaching or meditation from the monthly circle, with only you on screen. A quick invite to the next one at the end.</div></div>
+    <div class="dec"><div class="dq">Healing circle clips</div><div class="da">Your teaching or meditation from the monthly circle, with only you on screen. End with an invitation to join Premium for the next one.</div></div>
     <div class="dec"><div class="dq">"You asked" videos</div><div class="da">Read a real question (no names) and answer it like you would on Voxer. These are the easiest videos you'll ever make.</div></div>
     <div class="dec"><div class="dq">Your story</div><div class="da">Twenty years as a therapist, why you moved into spiritual work, your mother and the red roses, why BE matters more than DO.</div></div>
     <div class="dec"><div class="dq">Monthly live meditation</div><div class="da">Go live on YouTube once a month for a short group meditation. The replay stays up, and the ending invites people into Skool.</div></div>
@@ -782,7 +1127,7 @@ body{background:var(--paper)}
   <div class="panel goldline">
     <p class="b" style="white-space:pre-line;margin-bottom:0">[One or two sentences on what this video helps with.]
 
-Want more support? Join my free community, Be With Bessie, on Skool. You'll get the free [Chakra Quiz / Vagus Nerve Relaxation tool / Chakra Oracle Card], our monthly healing circle, and a warm group of women who get it.
+Want more support? Join my free community, The Quantum Portal, on Skool. You'll get the free [Chakra Quiz / Calm the Nervous System tool / Chakra Oracle Card], a free Sound and Hypnosis Circle replay, and a warm group of women who get it. When you want more, Premium brings you the monthly Chakra, Sound Healing and Hypnosis Circle live.
 [Your Skool link]
 
 About me: I'm Bessie, a former therapist of twenty years, now a spiritual mentor and hypnotherapist. I help women through life's changes so they can trust their light and live with more peace.
@@ -795,7 +1140,7 @@ About me: I'm Bessie, a former therapist of twenty years, now a spiritual mentor
   <div class="panel">
     <ul class="mine">
       <li><b>Channel art</b> in your ivory, rose and gold, with your photo and a single line about who you help.</li>
-      <li><b>Channel trailer:</b> use your new About page video. You'll already have made it this month.</li>
+      <li><b>Channel trailer:</b> use your About page video, or your new Portal video.</li>
       <li><b>About section and links:</b> your Skool community first, then Instagram and your website.</li>
       <li><b>Playlists</b> for each topic: Chakras, Calm Your Nervous System, Guided Hypnosis, Life Changes and Loss, Trust Your Intuition.</li>
       <li><b>Thumbnails:</b> your face, a few big words, the same colors every time. I can make you a Canva template.</li>
@@ -862,7 +1207,7 @@ About me: I'm Bessie, a former therapist of twenty years, now a spiritual mentor
   <details class="acc">
     <summary><span class="ag">✦</span>Life changes, grief and loss<span class="caret">›</span></summary>
     <div class="acc-body">
-      <p><b>Free tool to mention:</b> your Skool community and the monthly healing circle.</p>
+      <p><b>Free tool to mention:</b> your Skool community and the free circle replay, then the monthly circle in Premium.</p>
       <ul class="mine">
         <li>How to cope when life changes all at once</li>
         <li>Grieving a parent: what helped me after losing my mother</li>
@@ -949,7 +1294,7 @@ About me: I'm Bessie, a former therapist of twenty years, now a spiritual mentor
     </ol>
   </div>
 
-  <h3 class="sec">Where to start in October</h3>
+  <h3 class="sec">Where to start when you're ready</h3>
   <div class="panel goldline">
     <ol class="steps" style="margin-bottom:0">
       <li>Set up your channel art, links and trailer using your About page video.</li>
@@ -965,7 +1310,15 @@ About me: I'm Bessie, a former therapist of twenty years, now a spiritual mentor
 <section class="view" id="v-design">
   <div class="kicker">Your design</div>
   <h2 class="title">How you are built to work.</h2>
-  <p class="lede">The short version of your Business Alignment Blueprint, kept one tap away. Everything in this month's plan was shaped around it.</p>
+  <p class="lede">The short version of your Business Alignment Blueprint, kept one tap away, and the practices that help you live it and care for yourself. Everything in this month's plan was shaped around it.</p>
+
+  <div class="stabs" role="tablist">
+    <button type="button" class="stab on" data-sub="ds-blueprint">Your blueprint</button>
+    <button type="button" class="stab" data-sub="ds-show">Showing up</button>
+    <button type="button" class="stab" data-sub="ds-care">Caring for you</button>
+  </div>
+
+  <div class="subview on" id="ds-blueprint">
 
   <div class="facts">
     <div class="fact"><div class="fl">Type</div><div class="fv">Generator</div><div class="fs">Renewable energy when the work truly calls you</div></div>
@@ -1022,7 +1375,7 @@ About me: I'm Bessie, a former therapist of twenty years, now a spiritual mentor
       <div class="dec"><div class="dq">"I don't know what to say."</div><div class="da">Open Throat. Wait for a question to answer instead of forcing a post.</div></div>
       <div class="dec"><div class="dq">"I need to prove I'm worth it."</div><div class="da">Open Will. Ask: "Am I doing this to prove something?"</div></div>
       <div class="dec"><div class="dq">"I feel heavy and I don't know why."</div><div class="da">Open Solar Plexus. Ask: "Is this feeling mine?"</div></div>
-      <div class="dec"><div class="dq">"Which way am I even going?"</div><div class="da">Open G. Look at your September focus. The direction is already written down.</div></div>
+      <div class="dec"><div class="dq">"Which way am I even going?"</div><div class="da">Open G. Look at this month's focus. The direction is already written down.</div></div>
     </div>
   </div>
 
@@ -1030,7 +1383,7 @@ About me: I'm Bessie, a former therapist of twenty years, now a spiritual mentor
     <summary><span class="ag">◯</span>Open Root: pressure and urgency<span class="caret">›</span></summary>
     <div class="acc-body">
       <p><b>What it takes in:</b> other people's rush and pressure. It feels like you should be doing more and moving faster, even when nothing is on fire.</p>
-      <p><b>How it shows up for you:</b> pushing hard, then running out of steam. A long to-do list that feels urgent all at once. This is a big part of why the September plan is just two short weeks of small tasks.</p>
+      <p><b>How it shows up for you:</b> pushing hard, then running out of steam. A long to-do list that feels urgent all at once. This is a big part of why your monthly plan is short weeks of small tasks.</p>
       <p><b>Come back to:</b> one task at a time, chosen by your gut. Nothing in your plan is an emergency.</p>
     </div>
   </details>
@@ -1063,7 +1416,7 @@ About me: I'm Bessie, a former therapist of twenty years, now a spiritual mentor
     <div class="acc-body">
       <p><b>What it takes in:</b> other people's sense of direction. Who you're with shapes where you feel you're headed.</p>
       <p><b>How it shows up for you:</b> hearing about someone else's platform, program or plan and wondering if you should be doing that too.</p>
-      <p><b>Come back to:</b> the right people and places show you the way. Your direction for this month is written in your September focus. You don't have to find it again each morning.</p>
+      <p><b>Come back to:</b> the right people and places show you the way. Your direction for this month is written in your monthly focus. You don't have to find it again each morning.</p>
     </div>
   </details>
   <details class="acc">
@@ -1088,6 +1441,78 @@ About me: I'm Bessie, a former therapist of twenty years, now a spiritual mentor
     <p class="b" style="color:#eadfd2"><b style="color:#fff">Small decisions:</b> Say it out loud as a yes or no question, like "Do I want to record the video today?" Follow the first thing your body does, the warmth and lean forward, or the pull back. You don't have to sleep on it.</p>
     <p class="b" style="color:#eadfd2;margin-bottom:0"><b style="color:#fff">Big decisions:</b> Your Sacral needs something to respond to. Voxer me and I'll ask you yes or no questions until the answer comes from your body and not your head.</p>
   </div>
+  </div>
+
+  <div class="subview" id="ds-show">
+  <h3 class="sec">How your design shows up</h3>
+  <p class="b">You asked how your blueprint relates to showing up. The short answer: you're built to respond, not to broadcast. Your energy renews itself when something genuinely calls you, and it goes flat when you push. So showing up, for you, is less about a posting schedule and more about having a few simple ways to catch what lights you up and share it.</p>
+  <div class="whisper">Consistent doesn't mean every day. It means not disappearing.</div>
+
+  <div class="panel goldline">
+    <span class="pill">YOUR PRACTICES</span>
+    <div class="lrow"><div class="ln">1</div><div><b>The one-minute morning check.</b> Before you open anything, ask your Sacral out loud: Do I have energy for clients today? For creating? For posting? Follow what your body does. On a flat day, your post library does the showing up for you. <span class="why">Generator, Sacral authority</span></div></div>
+    <div class="lrow"><div class="ln">2</div><div><b>Catch it while it's warm.</b> When a client call, a Voxer or a download lights you up, record a two-minute voice memo right then. Your Spleen speaks once, in the moment. That memo becomes a post, a Between the Circle prompt, or a video later. <span class="why">Defined Spleen, Gate 47</span></div></div>
+    <div class="lrow"><div class="ln">3</div><div><b>A post library for flat days.</b> On a lit-up day, write a handful of posts and keep them in one doc, with a Canva folder of photos beside it. On flat days, copy one or hand it to your VA. You're still showing up, without forcing it. <span class="why">Open Throat</span></div></div>
+    <div class="lrow"><div class="ln">4</div><div><b>Invite, don't announce.</b> When you talk about the Portal or VIP, speak like the gatherer: "Come sit with us." "I'd love to have you." A personal note to a woman who knows your work will do more than any launch post. <span class="why">Gate 45, 4th line</span></div></div>
+    <div class="lrow"><div class="ln">5</div><div><b>Let them see the real you.</b> The posts that draw your women are the honest ones: grief, your mother, the morning you skipped a call to take care of your heart. You don't have to wrap it up neatly. <span class="why">Gate 22</span></div></div>
+    <div class="lrow"><div class="ln">6</div><div><b>Clear after you hold someone.</b> After a VIP call or a healing session, put your hands on your heart and give yourself a few minutes of Reiki before the next thing. Ask: is this mine? You give Reiki to everyone else. You get to receive it too. <span class="why">Open Solar Plexus, Root and Crown</span></div></div>
+    <div class="lrow"><div class="ln">7</div><div><b>Read frustration as a signal.</b> When you feel frustrated, ask where you pushed. Usually it's a task you started because you "should." Put it down and pick one your body wants. <span class="why">Generator signal</span></div></div>
+    <div class="lrow"><div class="ln">8</div><div><b>Rest on purpose.</b> Your Hermit line restores in quiet. PT, meal prep and your quiet days aren't time away from the business. They're what keep it going for years, at 76 and beyond. <span class="why">2nd line</span></div></div>
+  </div>
+
+  <h3 class="sec">On any given day</h3>
+  <div class="decgrid">
+    <div class="dec okdec"><div class="dq">A lit-up day</div><div class="da">Share what lit you up, then write two or three extra posts for the library while the energy's there.</div></div>
+    <div class="dec"><div class="dq">A flat day</div><div class="da">Post one from your library, or let your VA do it. Or skip. Both are fine.</div></div>
+    <div class="dec nodec"><div class="dq">An overloaded day</div><div class="da">Stop and breathe, like you already do. Name which center is talking (it's on the Your Blueprint tab). Then do one thing, or nothing.</div></div>
+  </div>
+  </div>
+  <div class="subview" id="ds-care">
+  <h3 class="sec">Caring for you, by design</h3>
+  <p class="b">Your body is where your design lives. When you take care of it the way you're built, your energy lasts, your heart stays steady, and the work stays a joy instead of a weight. Here's what your chart says about caring for yourself, alongside the good care you already have with your doctor, your physical therapist and your health coach.</p>
+  <div class="whisper">"I'm going to take care of myself." You said it the morning you skipped that call. This page is how to keep saying it.</div>
+
+  <h3 class="sec">Your daily rhythm</h3>
+  <div class="panel goldline">
+    <span class="pill">GENERATOR ENERGY</span>
+    <div class="lrow"><div class="ln">1</div><div><b>Spend your energy on yeses.</b> Your Sacral refills when it's used on things that genuinely call you. A day of yeses leaves you tired in a good way. A day of "shoulds" leaves you drained and frustrated, even if you did less.</div></div>
+    <div class="lrow"><div class="ln">2</div><div><b>Move every day.</b> Sacral energy needs somewhere to go. Your physical therapy three days a week is perfect for this. On the other days, a walk or a few minutes of gentle movement is enough.</div></div>
+    <div class="lrow"><div class="ln">3</div><div><b>Go to bed when you're tired.</b> Generators rest best when the day's energy is used up. Lie down a little before you think you're ready, and let a hypnosis or a quiet book carry you the rest of the way.</div></div>
+    <div class="lrow"><div class="ln">4</div><div><b>Ask before you give your energy away.</b> Calls, groups, events, favors. Ask your Sacral first. Skipping Victoria's call was exactly this, and it was right.</div></div>
+  </div>
+
+  <h3 class="sec">Your heart center</h3>
+  <p class="b">In Human Design, the Will center is also called the Heart center, and yours is open. Open Heart centers tend to push to prove their worth: saying yes to too much, promising more than they need to, and feeling like rest has to be earned. You told me you don't want to tax your heart. Your design agrees.</p>
+  <div class="decgrid">
+    <div class="dec"><div class="dq">Don't promise to prove</div><div class="da">When you hear yourself say "I'll do it every week," pause. You already caught this once with Between the Circle. Once a month was the kinder choice.</div></div>
+    <div class="dec"><div class="dq">Rest without earning it</div><div class="da">A quiet day isn't a reward for a productive one. It's part of the work.</div></div>
+    <div class="dec"><div class="dq">Let your worth be settled</div><div class="da">Twenty years of this work already speak for you. You have nothing to prove to anyone, including yourself.</div></div>
+  </div>
+
+  <h3 class="sec">Your Spleen, your quiet health instinct</h3>
+  <p class="b">Your Spleen is defined, and it's the center of instinct, timing and well-being. It speaks once, quietly, in the moment: this food doesn't feel right today, this person drains me, it's time to get this checked. It's the same knowing that led you to your physical therapist and your health coach. When it whispers, listen the first time. It won't shout.</p>
+
+  <h3 class="sec">Caring for your open centers</h3>
+  <p class="b">Your open centers are why women feel so held by you. They also take in a lot. Each one has a simple way to let go of what isn't yours.</p>
+  <div class="decgrid">
+    <div class="dec"><div class="dq">Open Solar Plexus</div><div class="da">You feel everyone's feelings. After a session, wash your hands slowly or do your rose water reset, and ask "Is this mine?" Don't make decisions while you're still holding someone else's emotions.</div></div>
+    <div class="dec"><div class="dq">Open Root</div><div class="da">You feel the rush around you. When the stress lands in your body, stop and breathe, like you already do. Then remind yourself nothing in your plan is an emergency.</div></div>
+    <div class="dec"><div class="dq">Open Crown and Ajna</div><div class="da">Your mind fills with questions. Write them in your Idea Log or Voxer them to me, then let them go. A hypnosis before bed quiets the mind like nothing else.</div></div>
+    <div class="dec"><div class="dq">Open G</div><div class="da">The places and people around you shape how you feel. Your space, with your angel wings, crystals and roses, is medicine. Spend time where you feel like yourself.</div></div>
+    <div class="dec"><div class="dq">Open Throat</div><div class="da">After a day of calls, give your voice a rest. Some quiet time with no talking and no screens lets it reset.</div></div>
+  </div>
+
+  <h3 class="sec">Your Hermit days</h3>
+  <p class="b">Your 2nd line needs real time alone, where nobody needs anything from you. Not a lighter work day, a true day off. Keep at least one each week with no calls, no posting and no checking Skool. That's when your energy, and your best ideas, come back.</p>
+
+  <h3 class="sec">A simple day of care</h3>
+  <div class="panel inkpanel">
+    <p class="b" style="color:#eadfd2"><b style="color:#fff">Morning:</b> Hands on your heart for a few minutes of Reiki before you open anything. Then ask your Sacral: what do I have energy for today?</p>
+    <p class="b" style="color:#eadfd2"><b style="color:#fff">After a session:</b> Hands, breath and water. Ask "Is this mine?" and put down what isn't.</p>
+    <p class="b" style="color:#eadfd2;margin-bottom:0"><b style="color:#fff">Evening:</b> Give yourself Reiki, moving through each chakra and lingering at your heart. Log the day in Check In, satisfied or frustrated, and go to bed when you're tired.</p>
+  </div>
+  <p class="b" style="font-size:14.5px">You give Reiki to everyone else. You get to receive it too.</p>
+  </div>
 </section>
 
 <!-- ================= CHECK IN ================= -->
@@ -1099,7 +1524,7 @@ About me: I'm Bessie, a former therapist of twenty years, now a spiritual mentor
   <h3 class="sec">Ask your Sacral</h3>
   <div class="panel">
     <p class="b">Type a yes or no question, say it out loud, and log what your body did before your mind stepped in.</p>
-    <input class="qin" id="sac-q" placeholder="Is $111 the right VIP price to start?">
+    <input class="qin" id="sac-q" placeholder="Is November 13 the day to open the Portal?">
     <div class="btnrow">
       <button type="button" class="btn sageb" id="sac-yes">Yes, a lean in</button>
       <button type="button" class="btn roseb" id="sac-no">No, a pull back</button>
@@ -1137,7 +1562,7 @@ About me: I'm Bessie, a former therapist of twenty years, now a spiritual mentor
 <section class="view" id="v-ideas">
   <div class="kicker">Catch now, decide later</div>
   <h2 class="title">The idea log.</h2>
-  <p class="lede">Ideas land all day, like the one for hand placements that came to you on our call. Catch each one here the moment it arrives. Tomorrow, ask your body if it's still a yes. If it lights you up, it's real. If it's gone flat, let it go with no guilt.</p>
+  <p class="lede">Ideas land all day, like Reiki calling you back on our October call. Catch each one here the moment it arrives. Tomorrow, ask your body if it's still a yes. If it lights you up, it's real. If it's gone flat, let it go with no guilt.</p>
   <div class="panel">
     <input class="qin" id="idea-in" placeholder="A new tool, a post, a circle theme, anything...">
     <div class="btnrow"><button type="button" class="btn goldb" id="idea-add">Catch it</button></div>
@@ -1149,7 +1574,49 @@ About me: I'm Bessie, a former therapist of twenty years, now a spiritual mentor
 <section class="view" id="v-tapping">
   <div class="kicker">EFT, written from our call</div>
   <h2 class="title">Tapping scripts.</h2>
-  <p class="lede">Two scripts, written from what came up on our call. Change any line that doesn't sound like you. Rate the feeling before you start, tap through the rounds, then rate it again. Begin each one with the setup statement on the karate chop point, said three times.</p>
+  <p class="lede">Three scripts, written from what came up on our calls. The newest one is at the top. Change any line that doesn't sound like you. Rate the feeling before you start, tap through the rounds, then rate it again. Begin each one with the setup statement on the karate chop point, said three times.</p>
+
+  <details class="acc script" id="script-s3">
+    <summary><span class="ag">✦</span>Too many moving pieces<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p class="b">For the days you feel overloaded and the stress lands in your body. You said it on our October call: there are too many moving pieces right now. Use this before you open your to-do list, or right after you stop to breathe.</p>
+      <div class="suds" data-s="s3" data-pos="before"><div class="suds-l">Before you tap: how strong is it right now? 0 is nothing, 10 is a lot.</div><div class="suds-nums"></div></div>
+      <div class="pacer" data-s="s3"><button type="button" class="btn goldb psmall pace-toggle">▶ Start guided pace</button><button type="button" class="pchip pace-slower">slower</button><button type="button" class="pchip pace-faster">faster</button><span class="plabel"></span></div>
+      <div class="setupline"><b>SETUP, KARATE CHOP, SAY 3 TIMES</b>"Even though there are too many moving pieces right now and I can feel the stress in my body, I love and accept myself, and I choose to take care of my heart first."</div>
+      <details class="acc" open><summary><span class="ag">1</span>Round one: naming it<span class="caret">›</span></summary><div class="acc-body"><div class="roundfocus"><b>WHAT TO FEEL THIS ROUND</b>Let the overload be here. Say it plainly.</div>
+        <div class="tapline"><span class="pt">EYEBROW</span><span class="tx">Too many moving pieces</span></div>
+        <div class="tapline"><span class="pt">SIDE OF EYE</span><span class="tx">The Portal, the VIP, the recordings</span></div>
+        <div class="tapline"><span class="pt">UNDER EYE</span><span class="tx">SoundCloud, Skool, SchoolKit</span></div>
+        <div class="tapline"><span class="pt">UNDER NOSE</span><span class="tx">I can feel it in my body</span></div>
+        <div class="tapline"><span class="pt">CHIN</span><span class="tx">This tightness, this rush</span></div>
+        <div class="tapline"><span class="pt">COLLARBONE</span><span class="tx">Like I'm already behind</span></div>
+        <div class="tapline"><span class="pt">UNDER ARM</span><span class="tx">Even though it's only October</span></div>
+        <div class="tapline"><span class="pt">TOP OF HEAD</span><span class="tx">All of this, and it's okay to feel it</span></div>
+      </div></details>
+      <details class="acc" open><summary><span class="ag">2</span>Round two: softening<span class="caret">›</span></summary><div class="acc-body"><div class="roundfocus"><b>WHAT TO FEEL THIS ROUND</b>Remember the morning you skipped a call to take care of yourself. That was wisdom, not falling behind.</div>
+        <div class="tapline"><span class="pt">EYEBROW</span><span class="tx">I skipped that call this morning</span></div>
+        <div class="tapline"><span class="pt">SIDE OF EYE</span><span class="tx">And the work was still there</span></div>
+        <div class="tapline"><span class="pt">UNDER EYE</span><span class="tx">My body asked for care</span></div>
+        <div class="tapline"><span class="pt">UNDER NOSE</span><span class="tx">And I listened</span></div>
+        <div class="tapline"><span class="pt">CHIN</span><span class="tx">I don't have to do it all at once</span></div>
+        <div class="tapline"><span class="pt">COLLARBONE</span><span class="tx">My live ladies finish on the 14th</span></div>
+        <div class="tapline"><span class="pt">UNDER ARM</span><span class="tx">The Portal opens when it's ready</span></div>
+        <div class="tapline"><span class="pt">TOP OF HEAD</span><span class="tx">One piece at a time is enough</span></div>
+      </div></details>
+      <details class="acc" open><summary><span class="ag">3</span>Round three: choosing<span class="caret">›</span></summary><div class="acc-body"><div class="roundfocus"><b>WHAT TO FEEL THIS ROUND</b>Now choose. Say these like decisions.</div>
+        <div class="tapline"><span class="pt">EYEBROW</span><span class="tx">I choose my heart first</span></div>
+        <div class="tapline"><span class="pt">SIDE OF EYE</span><span class="tx">My bones, my breath, my body</span></div>
+        <div class="tapline"><span class="pt">UNDER EYE</span><span class="tx">I choose one focus</span></div>
+        <div class="tapline"><span class="pt">UNDER NOSE</span><span class="tx">$1,000 a month is good for me</span></div>
+        <div class="tapline"><span class="pt">CHIN</span><span class="tx">I build this at my own pace</span></div>
+        <div class="tapline"><span class="pt">COLLARBONE</span><span class="tx">I BE more than I do</span></div>
+        <div class="tapline"><span class="pt">UNDER ARM</span><span class="tx">My angels hold the rest</span></div>
+        <div class="tapline"><span class="pt">TOP OF HEAD</span><span class="tx">I trust my light</span></div>
+      </div></details>
+      <div class="suds" data-s="s3" data-pos="after"><div class="suds-l">Now take a slow breath and check again. Where is it now?</div><div class="suds-nums"></div></div>
+      <div class="suds-delta" data-s="s3"></div>
+    </div>
+  </details>
 
   <details class="acc script" id="script-s1">
     <summary><span class="ag">✦</span>Too many platforms, one clear home<span class="caret">›</span></summary>
@@ -1237,7 +1704,7 @@ About me: I'm Bessie, a former therapist of twenty years, now a spiritual mentor
 
   <div class="panel" style="margin-top:22px">
     <span class="pill rosep">AFTER OUR NEXT CALL</span>
-    <p class="b" style="margin-bottom:0">If something specific comes up in October, a new script gets written around your exact words and added here.</p>
+    <p class="b" style="margin-bottom:0">If something specific comes up in November, a new script gets written around your exact words and added here.</p>
   </div>
 </section>
 
@@ -1249,11 +1716,11 @@ About me: I'm Bessie, a former therapist of twenty years, now a spiritual mentor
   <div class="panel">
     <input class="qin" id="win-in" placeholder="What happened?">
     <div class="btnrow"><button type="button" class="btn goldb" id="win-add">Add it to the ledger</button></div>
-    <div class="loglist" id="win-log"><div class="empty">Your first Skool review belongs here. Add it now.</div></div>
+    <div class="loglist" id="win-log"><div class="empty">Wrapping your live Portal round on October 14 belongs here.</div></div>
   </div>
   <div class="footer">
     <div class="sig">Trust your light, Bessie.</div>
-    Aurailia for Bessie, VIP September 2026
+    Aurailia for Bessie, VIP October 2026
     <div class="storenote">Everything you write here is saved privately in this browser and is here when you return.</div>
   </div>
 </section>
@@ -1266,8 +1733,9 @@ About me: I'm Bessie, a former therapist of twenty years, now a spiritual mentor
 const VIEWS=[
   {id:"welcome",label:"Welcome",g:"✦"},
   {id:"recap",label:"Call Recap",g:"◈"},
-  {id:"plan",label:"September Plan",g:"◆"},
+  {id:"plan",label:"October Plan",g:"◆"},
   {id:"path",label:"Your Offer Path",g:"❀"},
+  {id:"skool",label:"Your Skool Map",g:"◇"},
   {id:"youtube",label:"YouTube & Growth",g:"▷"},
   {id:"design",label:"Your Design",g:"✧"},
   {id:"checkin",label:"Check In",g:"◠"},
@@ -1546,7 +2014,7 @@ updatePacerUI();
 let winLog=[];
 function renderWins(){
   const el=document.getElementById("win-log");
-  if(!winLog.length){el.innerHTML='<div class="empty">Your first Skool review belongs here. Add it now.</div>';return;}
+  if(!winLog.length){el.innerHTML='<div class="empty">Wrapping your live Portal round on October 14 belongs here.</div>';return;}
   el.innerHTML=winLog.slice(0,30).map(i=>
     '<div class="logitem"><div class="when">'+i.d+'</div><div class="what">✶ '+esc(i.t)+'</div></div>'
   ).join("");
@@ -1564,7 +2032,32 @@ document.getElementById("win-in").addEventListener("keydown",e=>{
 });
 
 const TASKS={
-  w1:[
+  o1:[
+    {id:"oc1",t:"Connect SchoolKit to your community",s:"Click the SchoolKit icon at the top of Chrome, then Connect your community. You should see your plan and your community. If it doesn't show, Voxer me a screen recording."},
+    {id:"oc2",t:"Clear out The Portal, Your Invitation",s:"Delete the old week pages, the Suno pages you're not using, and the pre-work. Keep the classroom itself. You'll rewrite it in week three."},
+    {id:"oc3",t:"Download your hypnosis recordings into one folder",s:"Log into SoundCloud and download each one, then add the ones on your phone. Name each file for what it helps with, like Anxiety or Heart Chakra. Share the folder with your VA."},
+    {id:"oc4",t:"Update your Premium Vault description",s:"Change it to: \"Hypnosis and various tools for your mind, body, and spirit.\" Two minutes."}
+  ],
+  o2:[
+    {id:"oc5",t:"Copy the live Portal classroom in SchoolKit",s:"Rename the original The Portal Live, Student Access Only, and set its lessons to draft. The copy becomes your self-led signature program."},
+    {id:"oc6",t:"Move your live ladies into the self-led Portal",s:"After October 14. In Skool: the member, then Membership, then Courses. Give access to the self-led Portal, then Remove access to the live one. Start with Linda."},
+    {id:"oc7",t:"Ask your live ladies for a few words",s:"One DM: what was the Portal like for you? Screenshot what comes back, and ask if you can share it."},
+    {id:"oc8",t:"Publish the Inner Portal VIP at $147",s:"Finish your draft: one hour with you each month, a 30-day plan after each call, and Voxer in between. Decide first whether the self-led Portal is included."}
+  ],
+  o3:[
+    {id:"oc9",t:"Edit the self-led Portal for going solo",s:"Take out live dates and anything that says \"this week.\" Add one line to each lesson: questions? DM me or send a Voxer."},
+    {id:"oc10",t:"Rewrite Your Invitation as a welcome",s:"What the Portal is, who it's for, and a link to the self-led program. Then add The Portal Live Experience page with a link to your waitlist."},
+    {id:"oc11",t:"Add a Between the Circle folder to your Monthly Chakra classroom",s:"Put in one short chakra hypnosis, a sound bath and a few journal prompts. Next month, this set moves into the Vault."},
+    {id:"oc12",t:"Your VA uploads your first two library hypnoses",s:"Pick one category. Anxiety is a good start. She creates its page under Hypnosis in the Vault and adds two recordings."}
+  ],
+  o4:[
+    {id:"oc13",t:"Record a short video about the Portal",s:"Two or three minutes for the welcome page. Answer one question: who is the Portal for, and what does it give her? Crown on, wings behind you."},
+    {id:"oc14",t:"Personally invite three women to the Inner Portal VIP",s:"Women who already know your work. A Voxer or DM in your own words, not a sales post."},
+    {id:"oc15",t:"Write a batch of posts on a lit-up day",s:"Five or six about the Portal and VIP, saved in one doc with a Canva folder of photos. On flat days, post one or hand it to your VA."},
+    {id:"oc16",t:"Schedule your November 13 opening post",s:"November 13 is a Friday, outside your usual work days. Write it ahead and schedule it in SchoolKit so it goes out on its own."}
+
+  ],
+  s1:[
     {id:"t3",t:"Record your About page video and swap out the purple graphic",s:"Two minutes is plenty. Crystal crown on, angel wings behind you. Who you help, what they walk away with, and how to start. Loom or your phone both work."},
     {id:"t4",t:"Check in with your two Portal ladies who are catching up",s:"A quick Voxer or DM during integration week. Let them know the new finish date, around October 14, and add it to the classroom."},
     {id:"t5",t:"Share your September sacral chakra circle on Facebook",s:"Copy and paste the post, with a line about what came through in the circle and an invitation to the next one."},
@@ -1572,7 +2065,7 @@ const TASKS={
     {id:"t7",t:"Ask three people for a testimonial by DM",s:"Free members or past clients who've told you what your work meant to them. Screenshot each reply as it comes in."},
     {id:"t8",t:"Leave your review in Embody Wealth",s:"You wrote it down so you wouldn't forget. Here's your reminder."}
   ],
-  w2:[
+  s2:[
     {id:"t9",t:"Decide your VIP price and your Portal price",s:"Ask your body: $111, $147 or $222 a month to start? And is $222 still right for the self-led Portal? Log both in Check In."},
     {id:"t10",t:"Create the VIP tier in Skool with monthly and annual pricing",s:"Set the monthly price, turn on annual (around $1,111 a year at $111), and list what's included: Premium, one 1:1 call a month, Voxer, and the self-led Portal."},
     {id:"t11",t:"Duplicate your live Portal classroom into a self-led version",s:"Unlock it for VIP. Add a line on each lesson: questions? DM me or send a Voxer. Take out anything tied to live dates."},
@@ -1585,9 +2078,14 @@ const TASKS={
 };
 
 let doneSet={};
+const TGROUPS={o:{weeks:["o1","o2","o3","o4"],txt:"prog-txt",fill:"prog-fill"},s:{weeks:["s1","s2"],txt:"prog-txt-s",fill:"prog-fill-s"}};
 function renderTasks(){
+  Object.keys(TGROUPS).forEach(g=>renderGroup(g));
+}
+function renderGroup(g){
+  const G=TGROUPS[g];
   let total=0,done=0;
-  ["w1","w2"].forEach(w=>{
+  G.weeks.forEach(w=>{
     const el=document.getElementById("tasks-"+w); el.innerHTML="";
     TASKS[w].forEach(t=>{
       total++; const d=!!doneSet[t.id]; if(d)done++;
@@ -1600,9 +2098,9 @@ function renderTasks(){
       el.appendChild(row);
     });
   });
-  document.getElementById("prog-txt").textContent=done+" of "+total+" done";
-  document.getElementById("prog-fill").style.width=(total?Math.round(done/total*100):0)+"%";
-  const tick=document.getElementById("tick-plan"); if(tick) tick.classList.toggle("done",done===total&&total>0);
+  document.getElementById(G.txt).textContent=done+" of "+total+" done";
+  document.getElementById(G.fill).style.width=(total?Math.round(done/total*100):0)+"%";
+  if(g==="o"){const tick=document.getElementById("tick-plan"); if(tick) tick.classList.toggle("done",done===total&&total>0);}
 }
 
 /* ============ util & init ============ */
